@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "sector-4",
+      "description": "An industrial-looking gear mechanism, representing Sector 4.",
+      "imageUrl": "https://images.unsplash.com/photo-1674471361346-38d423db19f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxpbmR1c3RyaWFsJTIwZ2VhcnxlbnwwfHx8fDE3NjcxOTYzMDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "industrial gear"
+    },
+    {
+      "id": "arkeville",
+      "description": "A hazy, mysterious landscape for Dr. Arkeville's simulation.",
+      "imageUrl": "https://images.unsplash.com/photo-1756803447403-0caa8e93137c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtaXN0eSUyMGxhbmRzY2FwZXxlbnwwfHx8fDE3NjcxOTA4NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "misty landscape"
+    },
+    {
+      "id": "ad1",
+      "description": "Dehydrated Water Ad",
+      "imageUrl": "https://images.unsplash.com/photo-1616118132534-381148898bb4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3YXRlciUyMGJvdHRsZXxlbnwwfHx8fDE3NjcxMzE1MjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "water bottle"
+    },
+    {
+      "id": "ad2",
+      "description": "Optimism Visors Ad",
+      "imageUrl": "https://images.unsplash.com/photo-1467044705596-744699fa8931?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxnb2dnbGVzfGVufDB8fHx8MTc2NzE5NjMwMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "goggles"
+    },
+    {
+      "id": "ad3",
+      "description": "Soylent Green Ad",
+      "imageUrl": "https://images.unsplash.com/photo-1636583295923-cd6baf68aff1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmb29kJTIwY3ViZXxlbnwwfHx8fDE3NjcxOTYzMDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "food cube"
+    },
+    {
+      "id": "ad4",
+      "description": "Memory Wipes Ad",
+      "imageUrl": "https://images.unsplash.com/photo-1592659762303-90081d34b277?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjaXJjdWl0JTIwYm9hcmR8ZW58MHx8fHwxNzY3MTM1NDU1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "circuit board"
+    }
+  ]
 }

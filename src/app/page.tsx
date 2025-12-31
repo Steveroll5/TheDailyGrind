@@ -1,3 +1,55 @@
+'use client';
+import { useState, useEffect, type ReactNode } from 'react';
+import type { GamePhase } from '@/app/types';
+
+import CRTOverlay from './components/crt-overlay';
+import PhaseNewsletter from './components/phase-newsletter';
+import PhaseGlitch from './components/phase-glitch';
+import PhaseTerminal from './components/phase-terminal';
+import PhaseLockdown from './components/phase-lockdown';
+
 export default function Home() {
-  return <></>;
+  const [phase, setPhase] = useState<GamePhase>('NEWSLETTER');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', phase.toLowerCase());
+    if (phase === 'NEWSLETTER') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  }, [phase]);
+  
+  const handleGlitchSequence = () => {
+    setPhase('GLITCH');
+    setTimeout(() => {
+      setPhase('TERMINAL');
+    }, 1500);
+  };
+
+  const handleLockdown = () => {
+    setPhase('LOCKDOWN');
+  };
+
+  const renderPhase = (): ReactNode => {
+    switch (phase) {
+      case 'NEWSLETTER':
+        return <PhaseNewsletter onGlitch={handleGlitchSequence} />;
+      case 'GLITCH':
+        return <PhaseGlitch />;
+      case 'TERMINAL':
+        return <PhaseTerminal onLockdown={handleLockdown} />;
+      case 'LOCKDOWN':
+        return <PhaseLockdown />;
+      default:
+        return <PhaseNewsletter onGlitch={handleGlitchSequence} />;
+    }
+  };
+
+  return (
+    <main className="relative min-h-screen bg-background text-foreground transition-colors duration-500">
+      {['GLITCH', 'TERMINAL', 'LOCKDOWN'].includes(phase) && <CRTOverlay />}
+      <div className="relative z-10">{renderPhase()}</div>
+    </main>
+  );
 }

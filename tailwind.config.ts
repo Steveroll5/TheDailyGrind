@@ -10,9 +10,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
-        code: ['monospace'],
+        body: ['"Courier Prime"', 'monospace'],
+        headline: ['"Playfair Display"', 'serif'],
+        code: ['"VT323"', 'monospace'],
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -88,10 +88,42 @@ export default {
             height: '0',
           },
         },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        flicker: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.95' },
+        },
+        'pulse-alarm': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.7' },
+        },
+        'stamp-in': {
+          '0%': {
+            opacity: '0',
+            transform: 'scale(3) rotate(30deg)',
+          },
+          '60%': {
+            opacity: '1',
+            transform: 'scale(1) rotate(-10deg)',
+          },
+          '80%': {
+            transform: 'scale(1.05) rotate(-10deg)',
+          },
+          '100%': {
+            transform: 'scale(1) rotate(-10deg)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        marquee: 'marquee 30s linear infinite',
+        flicker: 'flicker 0.15s infinite',
+        'pulse-alarm': 'pulse-alarm 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'stamp-in': 'stamp-in 0.5s ease-out forwards',
       },
     },
   },
