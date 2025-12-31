@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useParams } from 'next/navigation';
@@ -7,6 +8,23 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Redacted from '@/app/components/redacted';
+
+const Censor = ({ text }: { text: string }) => {
+  const parts = text.split(/(Decibots)/gi);
+  return (
+    <>
+      {parts.map((part, i) =>
+        /decibots/i.test(part) ? (
+          <Redacted key={i}>{part}</Redacted>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+};
+
 
 export default function ArticlePage() {
   const params = useParams();
@@ -59,7 +77,9 @@ export default function ArticlePage() {
 
             <div className="font-body text-lg leading-relaxed space-y-4">
               {article.content.split('\n\n').map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+                <p key={index}>
+                  <Censor text={paragraph} />
+                </p>
               ))}
             </div>
           </CardContent>

@@ -1,3 +1,4 @@
+
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -9,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import ViolationModal from './violation-modal';
 import GlitchLetter from './glitch-letter';
+import Redacted from './redacted';
 
 type PhaseNewsletterProps = {
   onPasswordSuccess: () => void;
@@ -18,7 +20,7 @@ const adContent = [
   { id: 1, title: 'The Optimism Visor™', imageId: 'ad-visor', letter: 'C', tagline: "Hate the smog? Pretend it’s not there!", smallPrint: "Caution: Do not use near open pits." },
   { id: 2, title: 'Krovus Dehydrated Water', imageId: 'ad-water', letter: 'O', tagline: "Lightweight! Portable! Just add... wait.", smallPrint: "Warning: May cause internal dunes." },
   { id: 3, title: 'Grey-Scale Flavor Paste', imageId: 'ad-paste', letter: 'L', tagline: "Lunch in 3 seconds flat!", smallPrint: "Now with 5% less chalk!" },
-  { id: 4, title: 'Surplus Decibot Leg', imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you." },
+  { id: 4, title: <>Surplus <Redacted>Decibot</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you." },
 ];
 
 const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 border border-yellow-900" />;
@@ -152,7 +154,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
                     <Image 
                       src={adImage.imageUrl}
                       data-ai-hint={adImage.imageHint} 
-                      alt={currentAd.title} 
+                      alt={currentAd.title?.toString() || ''}
                       fill 
                       className="object-cover transition-opacity duration-1000"
                     />
@@ -175,5 +177,3 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 };
 
 export default PhaseNewsletter;
-
-    
