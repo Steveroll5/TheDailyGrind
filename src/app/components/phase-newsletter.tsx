@@ -7,16 +7,17 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import ViolationModal from './violation-modal';
 
 type PhaseNewsletterProps = {
   onGlitch: () => void;
 };
 
 const adContent = [
-  { id: 1, title: 'Dehydrated Water', imageId: 'ad1' },
-  { id: 2, title: 'Optimism Visors', imageId: 'ad2' },
-  { id: 3, title: 'Soylent Green', imageId: 'ad3' },
-  { id: 4, title: 'Memory Wipes', imageId: 'ad4' },
+  { id: 1, title: 'Dehydrated Water', imageId: 'ad1', letter: 'C' },
+  { id: 2, title: 'Optimism Visors', imageId: 'ad2', letter: 'O' },
+  { id: 3, title: 'Soylent Green', imageId: 'ad3', letter: 'L' },
+  { id: 4, title: 'Memory Wipes', imageId: 'ad4', letter: 'D' },
 ];
 
 const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 border border-yellow-900" />;
@@ -24,6 +25,9 @@ const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to
 const PhaseNewsletter = ({ onGlitch }: PhaseNewsletterProps) => {
   const [gateInput, setGateInput] = useState('');
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
+  const [revealedLetters, setRevealedLetters] = useState<string[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeAd, setActiveAd] = useState<(typeof adContent)[0] | null>(null);
 
   useEffect(() => {
     const adInterval = setInterval(() => {
@@ -40,6 +44,19 @@ const PhaseNewsletter = ({ onGlitch }: PhaseNewsletterProps) => {
       setGateInput('ACCESS DENIED');
       setTimeout(() => setGateInput(''), 1000);
     }
+  };
+
+  const handleAdClick = (ad: (typeof adContent)[0]) => {
+    setActiveAd(ad);
+    setIsModalOpen(true);
+  };
+  
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    if (activeAd && !revealedLetters.includes(activeAd.letter)) {
+      setRevealedLetters(prev => [...prev, activeAd.letter]);
+    }
+    setActiveAd(null);
   };
 
   const Ticker = () => (
@@ -65,6 +82,8 @@ const PhaseNewsletter = ({ onGlitch }: PhaseNewsletterProps) => {
 
   return (
     <div className="w-full min-h-screen grain-texture">
+       {isModalOpen && <ViolationModal onClose={handleCloseModal} />}
+
       <nav className="relative leather-texture border-b-4 border-secondary shadow-md p-4 flex justify-center items-center">
         <Rivet style={{ top: '6px', left: '6px' }} />
         <Rivet style={{ top: '6px', right: '6px' }} />
@@ -122,19 +141,27 @@ const PhaseNewsletter = ({ onGlitch }: PhaseNewsletterProps) => {
           <Card className="bg-card/80 border-2 border-secondary/50">
             <CardContent className="p-6">
               <h3 className="font-headline text-2xl mb-4 text-secondary">Advertisements</h3>
-              <div className="relative aspect-[2/3] overflow-hidden border-2 border-dashed border-secondary/50">
-                {adImage && (
-                  <Image 
-                    src={adImage.imageUrl}
-                    data-ai-hint={adImage.imageHint} 
-                    alt={currentAd.title} 
-                    fill 
-                    className="object-cover transition-opacity duration-1000"
-                  />
+              <div className="relative aspect-[2/3] overflow-hidden border-2 border-dashed border-secondary/50 cursor-pointer" onClick={() => handleAdClick(currentAd)}>
+                {revealedLetters.includes(currentAd.letter) ? (
+                  <div className="w-full h-full flex items-center justify-center bg-background">
+                    <span className="font-headline text-9xl text-primary">{currentAd.letter}</span>
+                  </div>
+                ) : (
+                  adImage && (
+                    <Image 
+                      src={adImage.imageUrl}
+                      data-ai-hint={adImage.imageHint} 
+                      alt={currentAd.title} 
+                      fill 
+                      className="object-cover transition-opacity duration-1000"
+                    />
+                  )
                 )}
-                <div className="absolute bottom-0 left-0 w-full p-2 bg-black/50 text-center text-amber-100 font-body text-sm">
-                  {currentAd.title}
-                </div>
+                {!revealedLetters.includes(currentAd.letter) && (
+                  <div className="absolute bottom-0 left-0 w-full p-2 bg-black/50 text-center text-amber-100 font-body text-sm">
+                    {currentAd.title}
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>

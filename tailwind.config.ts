@@ -116,6 +116,22 @@ export default {
             transform: 'scale(1) rotate(-10deg)',
           },
         },
+        'stamp-in-harsh': {
+          '0%': {
+            opacity: '0',
+            transform: 'scale(4) rotate(45deg)',
+          },
+          '50%': {
+            opacity: '1',
+            transform: 'scale(1) rotate(-5deg)',
+          },
+          '70%': {
+            transform: 'scale(1.1) rotate(-5deg)',
+          },
+          '100%': {
+            transform: 'scale(1) rotate(-5deg)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -124,6 +140,7 @@ export default {
         flicker: 'flicker 0.15s infinite',
         'pulse-alarm': 'pulse-alarm 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'stamp-in': 'stamp-in 0.5s ease-out forwards',
+        'stamp-in-harsh': 'stamp-in-harsh 0.4s ease-out forwards',
       },
     },
   },
