@@ -8,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import ViolationModal from './violation-modal';
+import GlitchLetter from './glitch-letter';
 
 type PhaseNewsletterProps = {
   onGlitch: () => void;
@@ -47,6 +48,7 @@ const PhaseNewsletter = ({ onGlitch }: PhaseNewsletterProps) => {
   };
 
   const handleAdClick = (ad: (typeof adContent)[0]) => {
+    if (revealedLetters.includes(ad.letter)) return;
     setActiveAd(ad);
     setIsModalOpen(true);
   };
@@ -124,7 +126,7 @@ const PhaseNewsletter = ({ onGlitch }: PhaseNewsletterProps) => {
         <aside className="space-y-8">
           <Card className="bg-card/80 border-2 border-primary/50">
             <CardContent className="p-6">
-              <h3 className="font-headline text-2xl mb-4 text-primary">The Gate</h3>
+              <h3 className="font-headline text-2xl mb-4 text-primary">Search</h3>
               <form onSubmit={handleGateSubmit} className="space-y-2">
                 <Input 
                   type="password" 
@@ -143,9 +145,9 @@ const PhaseNewsletter = ({ onGlitch }: PhaseNewsletterProps) => {
               <h3 className="font-headline text-2xl mb-4 text-secondary">Advertisements</h3>
               <div className="relative aspect-[2/3] overflow-hidden border-2 border-dashed border-secondary/50 cursor-pointer" onClick={() => handleAdClick(currentAd)}>
                 {revealedLetters.includes(currentAd.letter) ? (
-                  <div className="w-full h-full flex items-center justify-center bg-background">
-                    <span className="font-headline text-9xl text-primary">{currentAd.letter}</span>
-                  </div>
+                   <div className="w-full h-full flex items-center justify-center bg-background">
+                     <GlitchLetter letter={currentAd.letter} />
+                   </div>
                 ) : (
                   adImage && (
                     <Image 
