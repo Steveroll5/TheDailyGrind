@@ -129,10 +129,10 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
               <h3 className="font-headline text-2xl mb-4 text-primary">Search</h3>
               <form onSubmit={handleGateSubmit} className="space-y-2">
                 <Input 
-                  type="password" 
+                  type="text" 
                   value={gateInput}
                   onChange={e => setGateInput(e.target.value)}
-                  placeholder="System Indexing... (Error 404)" 
+                  placeholder="Search" 
                   className="bg-input border-primary/70 focus:ring-primary text-lg font-body"
                 />
                 <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-headline text-lg">Enter</Button>
