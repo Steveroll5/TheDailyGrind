@@ -1,5 +1,6 @@
 'use client';
 import { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -38,13 +39,24 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
                 <div className="md:col-span-2">
                     <Card className="bg-card/50 border-primary/50 p-4">
                         <CardContent className="space-y-2 pt-6">
-                            <p><span className="text-primary/70">Searching for ID: #WIRE-808...</span></p>
-                            <p>... Match found.</p>
-                            <br/>
-                            <p><strong>Name:</strong> Bob Dwyer</p>
-                            <p><strong>ID:</strong> #WIRE-808</p>
-                            <p><strong>Role:</strong> Senior Perimeter Specialist</p>
-                            <p><strong>Status:</strong> <span className="text-destructive animate-pulse">MIA</span> (Last seen near Vending Machine B)</p>
+                            <div className="flex flex-col sm:flex-row gap-6 items-start">
+                                <Image 
+                                    src="/bob-dwyer.png" 
+                                    alt="Bob Dwyer Employee Photo"
+                                    width={128} 
+                                    height={128} 
+                                    className="rounded-sm border-2 border-primary/30 aspect-square object-cover"
+                                />
+                                <div>
+                                    <p><span className="text-primary/70">Searching for ID: #WIRE-808...</span></p>
+                                    <p>... Match found.</p>
+                                    <br/>
+                                    <p><strong>Name:</strong> Bob Dwyer</p>
+                                    <p><strong>ID:</strong> #WIRE-808</p>
+                                    <p><strong>Role:</strong> Senior Perimeter Specialist</p>
+                                    <p><strong>Status:</strong> <span className="text-destructive animate-pulse">MIA</span> (Last seen near Vending Machine B)</p>
+                                </div>
+                            </div>
                             <br/>
                             <p><strong>--- NOTES ---</strong></p>
                             <p>&gt; Clearance Level 1 (Can open doors, cannot open snacks).</p>
