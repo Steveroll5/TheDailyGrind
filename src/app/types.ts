@@ -1,1 +1,1 @@
-export type GamePhase = 'NEWSLETTER' | 'GLITCH' | 'TERMINAL' | 'LOCKDOWN';
+export type GamePhase = 'NEWSLETTER' | 'LOGIN' | 'GLITCH' | 'TERMINAL' | 'LOCKDOWN';

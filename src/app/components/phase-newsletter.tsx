@@ -11,7 +11,7 @@ import ViolationModal from './violation-modal';
 import GlitchLetter from './glitch-letter';
 
 type PhaseNewsletterProps = {
-  onGlitch: () => void;
+  onPasswordSuccess: () => void;
 };
 
 const adContent = [
@@ -23,7 +23,7 @@ const adContent = [
 
 const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 border border-yellow-900" />;
 
-const PhaseNewsletter = ({ onGlitch }: PhaseNewsletterProps) => {
+const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const [gateInput, setGateInput] = useState('');
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [revealedLetters, setRevealedLetters] = useState<string[]>([]);
@@ -40,7 +40,7 @@ const PhaseNewsletter = ({ onGlitch }: PhaseNewsletterProps) => {
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (gateInput.toLowerCase() === 'coldfries') {
-      onGlitch();
+      onPasswordSuccess();
     } else {
       setGateInput('ACCESS DENIED');
       setTimeout(() => setGateInput(''), 1000);

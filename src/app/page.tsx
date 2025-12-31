@@ -4,6 +4,7 @@ import type { GamePhase } from '@/app/types';
 
 import CRTOverlay from './components/crt-overlay';
 import PhaseNewsletter from './components/phase-newsletter';
+import PhaseLogin from './components/phase-login';
 import PhaseGlitch from './components/phase-glitch';
 import PhaseTerminal from './components/phase-terminal';
 import PhaseLockdown from './components/phase-lockdown';
@@ -26,8 +27,12 @@ export default function Home() {
       }
     }
   }, [phase, pathname]);
+
+  const handlePasswordSuccess = () => {
+    setPhase('LOGIN');
+  };
   
-  const handleGlitchSequence = () => {
+  const handleLoginSuccess = () => {
     setPhase('GLITCH');
     setTimeout(() => {
       setPhase('TERMINAL');
@@ -41,7 +46,9 @@ export default function Home() {
   const renderPhase = (): ReactNode => {
     switch (phase) {
       case 'NEWSLETTER':
-        return <PhaseNewsletter onGlitch={handleGlitchSequence} />;
+        return <PhaseNewsletter onPasswordSuccess={handlePasswordSuccess} />;
+      case 'LOGIN':
+        return <PhaseLogin onLoginSuccess={handleLoginSuccess} />;
       case 'GLITCH':
         return <PhaseGlitch />;
       case 'TERMINAL':
@@ -49,7 +56,7 @@ export default function Home() {
       case 'LOCKDOWN':
         return <PhaseLockdown />;
       default:
-        return <PhaseNewsletter onGlitch={handleGlitchSequence} />;
+        return <PhaseNewsletter onPasswordSuccess={handlePasswordSuccess} />;
     }
   };
 
@@ -59,7 +66,7 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen bg-background text-foreground transition-colors duration-500">
-      {['GLITCH', 'TERMINAL', 'LOCKDOWN'].includes(phase) && <CRTOverlay />}
+      {['LOGIN', 'GLITCH', 'TERMINAL', 'LOCKDOWN'].includes(phase) && <CRTOverlay />}
       <div className="relative z-10">{renderPhase()}</div>
     </main>
   );
