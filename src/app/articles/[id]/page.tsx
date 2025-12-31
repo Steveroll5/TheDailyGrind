@@ -23,11 +23,10 @@ export default function ArticlePage() {
 
   return (
     <div className="w-full min-h-screen grain-texture bg-background text-foreground p-4 md:p-8">
-       <header className="text-center py-8">
+       <header className="text-center py-8 flex justify-center">
         <Link href="/">
-            <h1 className="font-headline text-7xl md:text-8xl font-bold text-foreground hover:text-primary transition-colors">THE DAILY GRIND</h1>
+          <Image src="/daily-grind-logo.png" alt="The Daily Grind" width={698} height={382} className="w-full max-w-2xl hover:opacity-90 transition-opacity" />
         </Link>
-        <p className="font-body text-xl text-muted-foreground">By The Apex Signal</p>
       </header>
 
       <div className="container mx-auto">

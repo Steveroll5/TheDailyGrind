@@ -98,9 +98,8 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
         </div>
       </nav>
 
-      <header className="text-center py-12">
-        <h1 className="font-headline text-7xl md:text-8xl font-bold text-foreground">THE DAILY GRIND</h1>
-        <p className="font-body text-xl text-muted-foreground">By The Apex Signal</p>
+      <header className="text-center py-12 flex justify-center">
+        <Image src="/daily-grind-logo.png" alt="The Daily Grind" width={698} height={382} className="w-full max-w-2xl" />
       </header>
 
       <Ticker />
