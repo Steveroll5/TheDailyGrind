@@ -7,18 +7,25 @@ import PhaseNewsletter from './components/phase-newsletter';
 import PhaseGlitch from './components/phase-glitch';
 import PhaseTerminal from './components/phase-terminal';
 import PhaseLockdown from './components/phase-lockdown';
+import { usePathname } from 'next/navigation';
 
 export default function Home() {
   const [phase, setPhase] = useState<GamePhase>('NEWSLETTER');
+  const pathname = usePathname();
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', phase.toLowerCase());
-    if (phase === 'NEWSLETTER') {
+    if (pathname.startsWith('/articles')) {
+      document.documentElement.setAttribute('data-theme', 'newsletter');
       document.documentElement.classList.remove('dark');
     } else {
-      document.documentElement.classList.add('dark');
+      document.documentElement.setAttribute('data-theme', phase.toLowerCase());
+      if (phase === 'NEWSLETTER') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
     }
-  }, [phase]);
+  }, [phase, pathname]);
   
   const handleGlitchSequence = () => {
     setPhase('GLITCH');
@@ -45,6 +52,10 @@ export default function Home() {
         return <PhaseNewsletter onGlitch={handleGlitchSequence} />;
     }
   };
+
+  if (pathname.startsWith('/articles')) {
+    return null; // The article page will be rendered by its own component
+  }
 
   return (
     <main className="relative min-h-screen bg-background text-foreground transition-colors duration-500">

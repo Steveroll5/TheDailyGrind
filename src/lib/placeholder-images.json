@@ -7,10 +7,82 @@
       "imageHint": "industrial gear"
     },
     {
+      "id": "sector-4-2",
+      "description": "A dark, ominous industrial corridor.",
+      "imageUrl": "https://images.unsplash.com/photo-1580691866389-3932eea67f44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxkYXJrJTIwaW5kdXN0cmlhbCUyMGNvcnJpZG9yfGVufDB8fHx8MTc2NzI4MzU3NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dark corridor"
+    },
+    {
       "id": "arkeville",
       "description": "A hazy, mysterious landscape for Dr. Arkeville's simulation.",
       "imageUrl": "https://images.unsplash.com/photo-1756803447403-0caa8e93137c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtaXN0eSUyMGxhbmRzY2FwZXxlbnwwfHx8fDE3NjcxOTA4NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "misty landscape"
+    },
+    {
+      "id": "arkeville-2",
+      "description": "An old, humming computer terminal.",
+      "imageUrl": "https://images.unsplash.com/photo-1550745165-9bc0b252726a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZXRybyUyMGNvbXB1dGVyfGVufDB8fHx8MTc2NzI4MzYyMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "retro computer"
+    },
+    {
+      "id": "vending-1",
+      "description": "An old, strange vending machine in a dark room.",
+      "imageUrl": "https://images.unsplash.com/photo-1599028902432-851214a72382?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvbGQlMjB2ZW5kaW5nJTIwbWFjaGluZXxlbnwwfHx8fDE3NjcyODMzOTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "old vending"
+    },
+    {
+      "id": "vending-2",
+      "description": "A rusty can with a blank label.",
+      "imageUrl": "https://images.unsplash.com/photo-1567111089028-9abbb2427b02?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxydXN0eSUyMGNhbnxlbnwwfHx8fDE3NjcyODMzOTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "rusty can"
+    },
+    {
+      "id": "rust-1",
+      "description": "A close up of rust on a metal surface.",
+      "imageUrl": "https://images.unsplash.com/photo-1559828923-abf5231c5193?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxydXN0JTIwbWV0YWx8ZW58MHx8fHwxNzY3MjgzNzM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "rust metal"
+    },
+    {
+      "id": "rust-2",
+      "description": "A wall covered in patterns of rust.",
+      "imageUrl": "https://images.unsplash.com/photo-1619537965823-224a1b0c9f1a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxydXN0JTIwcGF0dGVybnxlbnwwfHx8fDE3NjcyODM3Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "rust pattern"
+    },
+    {
+      "id": "decibel-1",
+      "description": "An old speaker emitting sound waves.",
+      "imageUrl": "https://images.unsplash.com/photo-1545435328-35d243a854fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb25pYyUyMHdhdmVzfGVufDB8fHx8MTc2NzI4Mzg2MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sonic waves"
+    },
+    {
+      "id": "decibel-2",
+      "description": "A person covering their ears in a noisy environment.",
+      "imageUrl": "https://images.unsplash.com/photo-1508202392029-a35284b163d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxub2lzZXxlbnwwfHx8fDE3NjcyODM4NjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "loud noise"
+    },
+    {
+      "id": "sunlight-1",
+      "description": "Bright industrial lamps in a row.",
+      "imageUrl": "https://images.unsplash.com/photo-1487955325063-54637a5711b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmR1c3RyaWFsJTIwbGFtcHN8ZW58MHx8fHwxNzY3MjgzOTQ3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "industrial lamps"
+    },
+    {
+      "id": "sunlight-2",
+      "description": "Light refracting through a prism.",
+      "imageUrl": "https://images.unsplash.com/photo-1603366615917-e8a6b19df113?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyYWluYm93JTIwbGlnaHR8ZW58MHx8fHwxNzY3MjgzOTQ3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "rainbow light"
+    },
+    {
+      "id": "psalm-1",
+      "description": "A crowd of people in unison.",
+      "imageUrl": "https://images.unsplash.com/photo-1528642474498-1af0c17fd8c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjcm93ZCUyMGluJTIwdW5pc29ufGVufDB8fHx8MTc2NzI4NDAzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "crowd unison"
+    },
+    {
+      "id": "psalm-2",
+      "description": "An old book with strange symbols.",
+      "imageUrl": "https://images.unsplash.com/photo-1544998095-b5f4c4b2241f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvbGQlMjBib29rJTIwc3ltYm9sc3xlbnwwfHx8fDE3NjcyODQwMzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "symbol book"
     },
     {
       "id": "ad1",
