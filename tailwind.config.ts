@@ -13,6 +13,7 @@ export default {
         body: ['"Courier Prime"', 'monospace'],
         headline: ['"Playfair Display"', 'serif'],
         code: ['"VT323"', 'monospace'],
+        handwritten: ['"Nanum Pen Script"', 'cursive'],
       },
       colors: {
         background: 'hsl(var(--background))',

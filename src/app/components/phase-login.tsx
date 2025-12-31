@@ -42,7 +42,7 @@ const PhaseLogin = ({ onLoginSuccess }: PhaseLoginProps) => {
               <Input
                 id="username"
                 type="text"
-                placeholder="e.g. Bob_Dwyer"
+                placeholder="e.g. Xxxxx_Yyyyy"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="bg-input border-primary/30 focus:ring-primary font-body text-lg"

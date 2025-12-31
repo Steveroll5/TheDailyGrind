@@ -29,14 +29,14 @@ export default function Home() {
   }, [phase, pathname]);
 
   const handlePasswordSuccess = () => {
-    setPhase('LOGIN');
+    setPhase('GLITCH');
+    setTimeout(() => {
+      setPhase('LOGIN');
+    }, 1500);
   };
   
   const handleLoginSuccess = () => {
-    setPhase('GLITCH');
-    setTimeout(() => {
-      setPhase('TERMINAL');
-    }, 1500);
+    setPhase('TERMINAL');
   };
 
   const handleLockdown = () => {
