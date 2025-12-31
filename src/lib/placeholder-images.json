@@ -3,109 +3,109 @@
     {
       "id": "anniversary-1",
       "description": "An abandoned factory with rust.",
-      "imageUrl": "https://images.unsplash.com/photo-1621287116954-d9035a10439d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhYmFuZG9uZWQlMjBmYWN0b3J5fGVufDB8fHx8MTc2NzIwMTYzOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/articles/anniversary-1.jpg",
       "imageHint": "abandoned factory"
     },
     {
       "id": "anniversary-2",
       "description": "A dark corridor with mechanical clicking sounds.",
-      "imageUrl": "https://images.unsplash.com/photo-1584314869186-d50d79adad2e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkYXJrJTIwY29ycmlkb3J8ZW58MHx8fHwxNzY3MTA5NTIyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/articles/anniversary-2.jpg",
       "imageHint": "dark corridor"
     },
     {
       "id": "arkeme-1",
       "description": "A person glitching or flickering.",
-      "imageUrl": "https://picsum.photos/seed/arkeme1/600/400",
+      "imageUrl": "/images/articles/arkeme-1.jpg",
       "imageHint": "glitching person"
     },
     {
       "id": "arkeme-2",
       "description": "A futuristic cityscape.",
-      "imageUrl": "https://images.unsplash.com/photo-1675326570919-946d728e9a25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmdXR1cmlzdGljJTIwY2l0eXxlbnwwfHx8fDE3NjcxMjk4NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/articles/arkeme-2.jpg",
       "imageHint": "futuristic city"
     },
     {
       "id": "cold-fries-1",
       "description": "Frozen french fries.",
-      "imageUrl": "https://images.unsplash.com/photo-1605262157780-8910063b2bf9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZnJvemVuJTIwZnJpZXN8ZW58MHx8fHwxNzY3MjAxNjM5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/articles/cold-fries-1.jpg",
       "imageHint": "frozen fries"
     },
     {
       "id": "cold-fries-2",
       "description": "An old diner.",
-      "imageUrl": "https://images.unsplash.com/photo-1594806659841-ebb406a3c86e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxvbGQlMjBkaW5lcnxlbnwwfHx8fDE3NjcyMDE2Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/articles/cold-fries-2.jpg",
       "imageHint": "old diner"
     },
     {
       "id": "rebot-1",
       "description": "A small friendly robot.",
-      "imageUrl": "https://images.unsplash.com/photo-1589254065909-b7086229d08c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzbWFsbCUyMHJvYm90fGVufDB8fHx8MTc2NzE1ODgwNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/articles/rebot-1.jpg",
       "imageHint": "small robot"
     },
     {
       "id": "rebot-2",
       "description": "A factory on fire.",
-      "imageUrl": "https://images.unsplash.com/photo-1720036237121-3158982f1273?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZmFjdG9yeSUyMGZpcmV8ZW58MHx8fHwxNzY3MjAxNjM5fDA&ixlibrb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/articles/rebot-2.jpg",
       "imageHint": "factory fire"
     },
     {
       "id": "stymcafe-1",
       "description": "A cup of coffee with a bolt in it.",
-      "imageUrl": "https://images.unsplash.com/photo-1628072757314-6c4a15fd7b93?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb2ZmZWUlMjBib2x0fGVufDB8fHx8MTc2NzIwMTYzOXww&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/articles/stymcafe-1.jpg",
       "imageHint": "coffee bolt"
     },
     {
       "id": "stymcafe-2",
       "description": "A grumpy barista.",
-      "imageUrl": "https://images.unsplash.com/photo-1662389943471-384354f606e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxncnVtcHklMjBiYXJpc3RhfGVufDB8fHx8MTc2NzIwMTYzOXww&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/articles/stymcafe-2.jpg",
       "imageHint": "grumpy barista"
     },
     {
       "id": "university-1",
       "description": "An old university building.",
-      "imageUrl": "https://images.unsplash.com/photo-1722777286901-33819f990809?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvbGQlMjB1bml2ZXJzaXR5fGVufDB8fHx8MTc2NzIwMTYzOXww&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/articles/university-1.jpg",
       "imageHint": "old university"
     },
     {
       "id": "university-2",
       "description": "A dirigible or airship.",
-      "imageUrl": "https://images.unsplash.com/photo-1622794751359-7fe5524857b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhaXJzaGlwfGVufDB8fHx8MTc2NzIwMTYzOXww&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/articles/university-2.jpg",
       "imageHint": "airship"
     },
     {
       "id": "water-1",
       "description": "A toilet overflowing with mud.",
-      "imageUrl": "https://images.unsplash.com/photo-1623654660259-1c6c5925a037?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtdWRkeSUyMHRvaWxldHxlbnwwfHx8fDE3NjcyMDE2Mzl8MA&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/articles/water-1.jpg",
       "imageHint": "muddy toilet"
     },
     {
       "id": "water-2",
       "description": "A box of powder with a water logo.",
-      "imageUrl": "https://images.unsplash.com/photo-1637760978539-c87137d809b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwb3dkZXIlMjBib3h8ZW58MHx8fHwxNzY3MjAxNjM5fDA&ixlib.rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/articles/water-2.jpg",
       "imageHint": "powder box"
     },
     {
       "id": "ad-visor",
       "description": "Optimism Visors Ad",
-      "imageUrl": "https://images.unsplash.com/photo-1705205148261-9e233aba2147?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxnb2dnbGVzfGVufDB8fHx8MTc2NzE5NjMwMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/ads/ad-visor.jpg",
       "imageHint": "goggles"
     },
     {
       "id": "ad-water",
       "description": "Dehydrated Water Ad",
-      "imageUrl": "https://images.unsplash.com/photo-1616118133712-8c947f7b822c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx3YXRlciUyMGJvdHRsZXxlbnwwfHx8fDE3NjcxMzE1MjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/ads/ad-water.jpg",
       "imageHint": "water bottle"
     },
     {
       "id": "ad-paste",
       "description": "Grey-Scale Flavor Paste",
-      "imageUrl": "https://images.unsplash.com/photo-1683964022880-c2d93b41caf7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Zm9vZCUyMGN1YmV8ZW58MHx8fHwxNzY3MTk2MzAyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/ads/ad-paste.jpg",
       "imageHint": "food paste"
     },
     {
       "id": "ad-leg",
       "description": "Surplus Decibot Leg",
-      "imageUrl": "https://images.unsplash.com/photo-1515630278258-407f66498911?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjaXJjdWl0JTIwYm9hcmR8ZW58MHx8fHwxNzY3MTM1NDU1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/ads/ad-leg.jpg",
       "imageHint": "robot leg"
     }
   ]
