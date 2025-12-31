@@ -15,10 +15,10 @@ type PhaseNewsletterProps = {
 };
 
 const adContent = [
-  { id: 1, title: 'Dehydrated Water', imageId: 'ad1', letter: 'C' },
-  { id: 2, title: 'Optimism Visors', imageId: 'ad2', letter: 'O' },
-  { id: 3, title: 'Soylent Green', imageId: 'ad3', letter: 'L' },
-  { id: 4, title: 'Memory Wipes', imageId: 'ad4', letter: 'D' },
+  { id: 1, title: 'The Optimism Visor™', imageId: 'ad-visor', letter: 'C', tagline: "Hate the smog? Pretend it’s not there!", smallPrint: "Caution: Do not use near open pits." },
+  { id: 2, title: 'Krovus Dehydrated Water', imageId: 'ad-water', letter: 'O', tagline: "Lightweight! Portable! Just add... wait.", smallPrint: "Warning: May cause internal dunes." },
+  { id: 3, title: 'Grey-Scale Flavor Paste', imageId: 'ad-paste', letter: 'L', tagline: "Lunch in 3 seconds flat!", smallPrint: "Now with 5% less chalk!" },
+  { id: 4, title: 'Surplus Decibot Leg', imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you." },
 ];
 
 const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 border border-yellow-900" />;
@@ -160,7 +160,9 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
                 )}
                 {!revealedLetters.includes(currentAd.letter) && (
                   <div className="absolute bottom-0 left-0 w-full p-2 bg-black/50 text-center text-amber-100 font-body text-sm">
-                    {currentAd.title}
+                    <p className="font-bold">{currentAd.title}</p>
+                    <p className="text-xs italic">"{currentAd.tagline}"</p>
+                    <p className="text-xs mt-1 opacity-70">{currentAd.smallPrint}</p>
                   </div>
                 )}
               </div>
@@ -173,3 +175,5 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 };
 
 export default PhaseNewsletter;
+
+    

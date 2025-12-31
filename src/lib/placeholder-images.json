@@ -45,68 +45,68 @@
     {
       "id": "rebot-2",
       "description": "A factory on fire.",
-      "imageUrl": "https://images.unsplash.com/photo-1720036237121-3158982f1273?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZmFjdG9yeSUyMGZpcmV8ZW58MHx8fHwxNzY3MjAxNjM5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1720036237121-3158982f1273?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZmFjdG9yeSUyMGZpcmV8ZW58MHx8fHwxNzY3MjAxNjM5fDA&ixlibrb-4.1.0&q=80&w=1080",
       "imageHint": "factory fire"
     },
     {
       "id": "stymcafe-1",
       "description": "A cup of coffee with a bolt in it.",
-      "imageUrl": "https://images.unsplash.com/photo-1628072757314-6c4a15fd7b93?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb2ZmZWUlMjBib2x0fGVufDB8fHx8MTc2NzIwMTYzOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1628072757314-6c4a15fd7b93?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb2ZmZWUlMjBib2x0fGVufDB8fHx8MTc2NzIwMTYzOXww&ixlib.rb-4.1.0&q=80&w=1080",
       "imageHint": "coffee bolt"
     },
     {
       "id": "stymcafe-2",
       "description": "A grumpy barista.",
-      "imageUrl": "https://images.unsplash.com/photo-1662389943471-384354f606e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxncnVtcHklMjBiYXJpc3RhfGVufDB8fHx8MTc2NzIwMTYzOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1662389943471-384354f606e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxncnVtcHklMjBiYXJpc3RhfGVufDB8fHx8MTc2NzIwMTYzOXww&ixlib.rb-4.1.0&q=80&w=1080",
       "imageHint": "grumpy barista"
     },
     {
       "id": "university-1",
       "description": "An old university building.",
-      "imageUrl": "https://images.unsplash.com/photo-1722777286901-33819f990809?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvbGQlMjB1bml2ZXJzaXR5fGVufDB8fHx8MTc2NzIwMTYzOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1722777286901-33819f990809?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvbGQlMjB1bml2ZXJzaXR5fGVufDB8fHx8MTc2NzIwMTYzOXww&ixlib.rb-4.1.0&q=80&w=1080",
       "imageHint": "old university"
     },
     {
       "id": "university-2",
       "description": "A dirigible or airship.",
-      "imageUrl": "https://images.unsplash.com/photo-1622794751359-7fe5524857b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhaXJzaGlwfGVufDB8fHx8MTc2NzIwMTYzOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1622794751359-7fe5524857b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhaXJzaGlwfGVufDB8fHx8MTc2NzIwMTYzOXww&ixlib.rb-4.1.0&q=80&w=1080",
       "imageHint": "airship"
     },
     {
       "id": "water-1",
       "description": "A toilet overflowing with mud.",
-      "imageUrl": "https://images.unsplash.com/photo-1623654660259-1c6c5925a037?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtdWRkeSUyMHRvaWxldHxlbnwwfHx8fDE3NjcyMDE2Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1623654660259-1c6c5925a037?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtdWRkeSUyMHRvaWxldHxlbnwwfHx8fDE3NjcyMDE2Mzl8MA&ixlib.rb-4.1.0&q=80&w=1080",
       "imageHint": "muddy toilet"
     },
     {
       "id": "water-2",
       "description": "A box of powder with a water logo.",
-      "imageUrl": "https://images.unsplash.com/photo-1637760978539-c87137d809b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwb3dkZXIlMjBib3h8ZW58MHx8fHwxNzY3MjAxNjM5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1637760978539-c87137d809b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwb3dkZXIlMjBib3h8ZW58MHx8fHwxNzY3MjAxNjM5fDA&ixlib.rb-4.1.0&q=80&w=1080",
       "imageHint": "powder box"
     },
     {
-      "id": "ad1",
-      "description": "Dehydrated Water Ad",
-      "imageUrl": "https://images.unsplash.com/photo-1616118133712-8c947f7b822c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx3YXRlciUyMGJvdHRsZXxlbnwwfHx8fDE3NjcxMzE1MjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "water bottle"
-    },
-    {
-      "id": "ad2",
+      "id": "ad-visor",
       "description": "Optimism Visors Ad",
       "imageUrl": "https://images.unsplash.com/photo-1705205148261-9e233aba2147?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxnb2dnbGVzfGVufDB8fHx8MTc2NzE5NjMwMnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "goggles"
     },
     {
-      "id": "ad3",
-      "description": "Soylent Green Ad",
-      "imageUrl": "https://images.unsplash.com/photo-1683964022880-c2d93b41caf7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Zm9vZCUyMGN1YmV8ZW58MHx8fHwxNzY3MTk2MzAyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "food cube"
+      "id": "ad-water",
+      "description": "Dehydrated Water Ad",
+      "imageUrl": "https://images.unsplash.com/photo-1616118133712-8c947f7b822c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHx3YXRlciUyMGJvdHRsZXxlbnwwfHx8fDE3NjcxMzE1MjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "water bottle"
     },
     {
-      "id": "ad4",
-      "description": "Memory Wipes Ad",
+      "id": "ad-paste",
+      "description": "Grey-Scale Flavor Paste",
+      "imageUrl": "https://images.unsplash.com/photo-1683964022880-c2d93b41caf7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Zm9vZCUyMGN1YmV8ZW58MHx8fHwxNzY3MTk2MzAyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "food paste"
+    },
+    {
+      "id": "ad-leg",
+      "description": "Surplus Decibot Leg",
       "imageUrl": "https://images.unsplash.com/photo-1515630278258-407f66498911?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjaXJjdWl0JTIwYm9hcmR8ZW58MHx8fHwxNzY3MTM1NDU1fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "circuit board"
+      "imageHint": "robot leg"
     }
   ]
 }
