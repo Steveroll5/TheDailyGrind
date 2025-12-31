@@ -13,7 +13,7 @@ export const articles: Article[] = [
     id: 'anniversary-of-silence',
     title: 'The Anniversary of Silence: 5 Years Since Krovus Fell',
     summary: 'FIVE YEARS OF SILENCE Today marks the 5th anniversary of the catastrophic shutdown of Krovus Industries. While official reports cite "unexpected heavy oxidation," survivors from Sector 4 tell a different story involving missing staff and strange mechanical noises.',
-    content: `FIVE YEARS OF RUST: THE SILENCE OF SECTOR 4\n\nToday marks the fifth anniversary of the Krovus Industries shutdown. Management still cites 'unexpected oxidation' as the official cause, but survivors tell a different story. They speak of the [REDACTED]—mechanical pests that mimic the sound of industry until it's too late.\n\nWe remember the first soul lost: Bob Dwyer (#WIRE-808). A Perimeter Specialist who vanished near the North Gate while screaming about 'metal bugs.' He was the first of 67 confirmed casualties. To this day, the Fence Gate remains locked, and the clicking sounds from within have only gotten louder.`,
+    content: `FIVE YEARS OF RUST: THE SILENCE OF SECTOR 4\n\nToday marks the fifth anniversary of the Krovus Industries shutdown. Management still cites 'unexpected oxidation' as the official cause, but survivors tell a different story. They speak of the Decibots—mechanical pests that mimic the sound of industry until it's too late.\n\nWe remember the first soul lost: Bob Dwyer (#WIRE-808). A Perimeter Specialist who vanished near the North Gate while screaming about 'metal bugs.' He was the first of 67 confirmed casualties. To this day, the Fence Gate remains locked, and the clicking sounds from within have only gotten louder.`,
     image1Id: 'anniversary-1',
     image2Id: 'anniversary-2',
   },
