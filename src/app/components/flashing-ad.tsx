@@ -23,9 +23,9 @@ const FlashingAd = ({ ad, onClose, onAdClick }: FlashingAdProps) => {
   const adImage = PlaceHolderImages.find(p => p.id === ad.imageId);
 
   return (
-    <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center" onClick={onClose}>
+    <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={onClose}>
       <Card 
-        className="relative w-full max-w-lg bg-card border-4 border-destructive shadow-2xl animate-stamp-in-harsh"
+        className="relative w-full max-w-lg bg-card border-4 border-destructive shadow-2xl animate-in fade-in"
         onClick={(e) => {
           e.stopPropagation();
           onAdClick();
@@ -41,18 +41,19 @@ const FlashingAd = ({ ad, onClose, onAdClick }: FlashingAdProps) => {
         >
           <XCircle size={32} />
         </button>
-        <CardContent className="p-0">
-          <div className="relative aspect-video">
+        <CardContent className="p-4 space-y-4">
+          <div className="w-full">
             {adImage && (
               <Image 
                 src={adImage.imageUrl}
                 alt={ad.title?.toString() || 'Advertisement'}
-                fill
-                className="object-cover"
+                width={600}
+                height={400}
+                className="w-full h-auto object-contain"
               />
             )}
           </div>
-          <div className="p-6 text-center">
+          <div className="text-center border-t-2 border-destructive/50 pt-4">
              <h3 className="font-headline text-3xl text-destructive mb-2">
                 {typeof ad.title === 'string' && ad.title.includes('Decibot') ? <Redacted>Decibot</Redacted> : ad.title}
              </h3>
