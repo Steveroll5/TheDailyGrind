@@ -28,6 +28,8 @@ const adContent = [
     { id: 4, title: <>Surplus <Redacted>Decibot</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you. But it does twitch when you yell at it." },
 ];
 
+const flashingAdContent = adContent[0];
+
 const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 border border-yellow-900" />;
 
 const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
@@ -164,7 +166,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     <div className="w-full min-h-screen grain-texture relative bg-background">
        {showPeel && <PagePeel onClick={handlePeelClick} />}
        {isModalOpen && <ViolationModal onClose={handleCloseModal} />}
-       {showFlashingAd && <FlashingAd ad={currentAd} onClose={() => setShowFlashingAd(false)} onAdClick={handleFlashingAdClick} />}
+       {showFlashingAd && <FlashingAd ad={flashingAdContent} onClose={() => setShowFlashingAd(false)} onAdClick={handleFlashingAdClick} />}
 
 
       <nav className="relative leather-texture border-b-4 border-secondary shadow-md p-4 flex justify-center items-center">
@@ -257,3 +259,5 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 };
 
 export default PhaseNewsletter;
+
+    
