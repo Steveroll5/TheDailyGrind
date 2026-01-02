@@ -126,15 +126,15 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 
     return (
         <div className="bg-primary/20 border-y border-primary/50 text-primary-foreground/80 overflow-hidden relative h-10 flex items-center">
-            <div className="marquee font-body text-lg flex">
-                <div className="marquee-content flex-shrink-0 flex items-center min-w-full">
+            <div className="flex animate-marquee whitespace-nowrap">
+                <div className="flex-shrink-0 flex items-center">
                     {tickerItems.map((item, index) => (
-                        <span key={index} className="mx-8 whitespace-nowrap">{item}</span>
+                        <span key={index} className="mx-8">{item}</span>
                     ))}
                 </div>
-                <div className="marquee-content flex-shrink-0 flex items-center min-w-full" aria-hidden="true">
+                <div className="flex-shrink-0 flex items-center" aria-hidden="true">
                     {tickerItems.map((item, index) => (
-                        <span key={index} className="mx-8 whitespace-nowrap">{item}</span>
+                        <span key={index} className="mx-8">{item}</span>
                     ))}
                 </div>
             </div>
