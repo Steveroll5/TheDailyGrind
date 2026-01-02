@@ -144,7 +144,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
           <Card className="bg-card/80 border-2 border-secondary/50">
             <CardContent className="p-6">
               <h3 className="font-headline text-2xl mb-4 text-secondary">Advertisements</h3>
-              <div className="relative aspect-[2/3] overflow-hidden border-2 border-dashed border-secondary/50 cursor-pointer" onClick={() => handleAdClick(currentAd)}>
+              <div className="group relative aspect-[2/3] overflow-hidden border-2 border-dashed border-secondary/50 cursor-pointer" onClick={() => handleAdClick(currentAd)}>
                 {revealedLetters.includes(currentAd.letter) ? (
                    <div className="w-full h-full flex items-center justify-center bg-background">
                      <GlitchLetter letter={currentAd.letter} />
@@ -161,7 +161,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
                   )
                 )}
                 {!revealedLetters.includes(currentAd.letter) && (
-                  <div className="absolute bottom-0 left-0 w-full p-2 bg-black/50 text-center text-amber-100 font-body text-sm">
+                  <div className="absolute inset-0 bg-black/50 text-center text-amber-100 font-body text-sm flex flex-col justify-end p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <p className="font-bold">{currentAd.title}</p>
                     <p className="text-xs italic">"{currentAd.tagline}"</p>
                     <p className="text-xs mt-1 opacity-70">{currentAd.smallPrint}</p>
