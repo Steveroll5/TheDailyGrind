@@ -41,7 +41,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (gateInput.toLowerCase() === 'coldfries') {
+    if (gateInput.replace(/\s/g, '').toLowerCase() === 'coldfries') {
       onPasswordSuccess();
     } else {
       setGateInput('ACCESS DENIED');
