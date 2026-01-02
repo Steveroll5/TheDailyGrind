@@ -152,9 +152,7 @@
   }
 
   .marquee {
-    display: inline-block;
-    white-space: nowrap;
-    animation: marquee 30s linear infinite;
+    animation: marquee 40s linear infinite;
   }
 
   .glitch {
@@ -185,11 +183,11 @@
 }
 
 @keyframes marquee {
-  0% {
+  from {
     transform: translateX(0);
   }
-  100% {
-    transform: translateX(-50%);
+  to {
+    transform: translateX(-100%);
   }
 }
 

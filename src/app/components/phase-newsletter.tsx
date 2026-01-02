@@ -113,23 +113,34 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     return <PhaseOpinionViolation />;
   }
 
-  const Ticker = () => (
-    <div className="bg-primary/20 border-y border-primary/50 text-primary-foreground/80 overflow-hidden relative h-10 flex items-center">
-      <div className="marquee font-body text-lg">
-        <span className="mx-8">Days since last accident: 0</span>
-        <span className="mx-8">...</span>
-        <span className="mx-8">Reminder: Crying in the breakroom is strictly limited to 5 minutes</span>
-        <span className="mx-8">...</span>
-        <span className="mx-8">Krovus Stock holds steady at $0.00.</span>
-        <span className="mx-8">...</span>
-        <span className="mx-8">Days since last accident: 0</span>
-        <span className="mx-8">...</span>
-        <span className="mx-8">Reminder: Crying in the breakroom is strictly limited to 5 minutes</span>
-        <span className="mx-8">...</span>
-        <span className="mx-8">Krovus Stock holds steady at $0.00.</span>
-      </div>
-    </div>
-  );
+  const Ticker = () => {
+    const tickerItems = [
+      "Days since last accident: 0",
+      "...",
+      "Reminder: Crying in the breakroom is strictly limited to 5 minutes",
+      "...",
+      "Krovus Stock holds steady at $0.00.",
+      "...",
+      "BREAKING NEWS: PET BOT LEG CAUSES CHAOS IN 5TH ST SAN RAMOS",
+    ];
+
+    return (
+        <div className="bg-primary/20 border-y border-primary/50 text-primary-foreground/80 overflow-hidden relative h-10 flex items-center">
+            <div className="marquee font-body text-lg flex">
+                <div className="marquee-content flex-shrink-0 flex items-center">
+                    {tickerItems.map((item, index) => (
+                        <span key={index} className="mx-8 whitespace-nowrap">{item}</span>
+                    ))}
+                </div>
+                <div className="marquee-content flex-shrink-0 flex items-center" aria-hidden="true">
+                    {tickerItems.map((item, index) => (
+                        <span key={index} className="mx-8 whitespace-nowrap">{item}</span>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
   
   const currentAd = adContent[currentAdIndex];
   const adImage = PlaceHolderImages.find(p => p.id === currentAd.imageId);
