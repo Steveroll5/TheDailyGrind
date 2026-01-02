@@ -72,19 +72,41 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   }, [showOpinionViolation]);
 
   useEffect(() => {
-    const timeout1 = setTimeout(() => {
-      setFlashingAdToShow(adContent[0]);
-    }, 10000); // 10 seconds
+    const flashSchedule = [
+      { adIndex: 0, delay: 10000 },  // 10s
+      { adIndex: 1, delay: 15000 },  // 10s + 15s = 25s
+      { adIndex: 2, delay: 20000 },  // 25s + 20s = 45s
+      { adIndex: 3, delay: 25000 },  // 45s + 25s = 70s
+    ];
+    
+    let cumulativeDelay = 0;
+    const timeouts: NodeJS.Timeout[] = [];
 
-    const timeout2 = setTimeout(() => {
-      setFlashingAdToShow(adContent[1]);
-    }, 25000); // 10s + 15s
+    const setupTimeouts = () => {
+        flashSchedule.forEach(item => {
+            cumulativeDelay += item.delay;
+            const timeout = setTimeout(() => {
+                if (flashingAdToShow === null) { // Only show if another isn't already active
+                    setFlashingAdToShow(adContent[item.adIndex]);
+                }
+            }, cumulativeDelay);
+            timeouts.push(timeout);
+        });
+    };
+    
+    setupTimeouts(); // Initial setup
+
+    const loopInterval = setInterval(() => {
+        cumulativeDelay = 0;
+        setupTimeouts();
+    }, cumulativeDelay); // This will be the total time for one cycle
 
     return () => {
-      clearTimeout(timeout1);
-      clearTimeout(timeout2);
+      timeouts.forEach(clearTimeout);
+      clearInterval(loopInterval);
     };
-  }, []);
+  }, [flashingAdToShow]);
+
 
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
