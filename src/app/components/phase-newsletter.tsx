@@ -119,7 +119,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
       "...",
       "Reminder: Crying in the breakroom is strictly limited to 5 minutes",
       "...",
-      "Krovus Stock holds steady at $0.00.",
+      "Krovus Stock holds steady at v0.00.",
       "...",
       "BREAKING NEWS: PET BOT LEG CAUSES CHAOS IN 5TH ST SAN RAMOS",
     ];
@@ -127,12 +127,12 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     return (
         <div className="bg-primary/20 border-y border-primary/50 text-primary-foreground/80 overflow-hidden relative h-10 flex items-center">
             <div className="marquee font-body text-lg flex">
-                <div className="marquee-content flex-shrink-0 flex items-center">
+                <div className="marquee-content flex-shrink-0 flex items-center min-w-full">
                     {tickerItems.map((item, index) => (
                         <span key={index} className="mx-8 whitespace-nowrap">{item}</span>
                     ))}
                 </div>
-                <div className="marquee-content flex-shrink-0 flex items-center" aria-hidden="true">
+                <div className="marquee-content flex-shrink-0 flex items-center min-w-full" aria-hidden="true">
                     {tickerItems.map((item, index) => (
                         <span key={index} className="mx-8 whitespace-nowrap">{item}</span>
                     ))}
