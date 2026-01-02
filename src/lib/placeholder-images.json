@@ -1,85 +1,85 @@
 {
   "placeholderImages": [
     {
-      "id": "anniversary-1",
+      "id": "article-1",
       "description": "An abandoned factory with rust.",
       "imageUrl": "/images/articlesf/1.jpg",
       "imageHint": "abandoned factory"
     },
     {
-      "id": "anniversary-2",
+      "id": "article-2",
       "description": "A dark corridor with mechanical clicking sounds.",
       "imageUrl": "/images/articlesf/2.jpg",
       "imageHint": "dark corridor"
     },
     {
-      "id": "arkeme-1",
+      "id": "article-3",
       "description": "A person glitching or flickering.",
       "imageUrl": "/images/articlesf/3.jpg",
       "imageHint": "glitching person"
     },
     {
-      "id": "arkeme-2",
+      "id": "article-4",
       "description": "A futuristic cityscape.",
       "imageUrl": "/images/articlesf/4.jpg",
       "imageHint": "futuristic city"
     },
     {
-      "id": "cold-fries-1",
+      "id": "article-5",
       "description": "Frozen french fries.",
       "imageUrl": "/images/articlesf/5.jpg",
       "imageHint": "frozen fries"
     },
     {
-      "id": "cold-fries-2",
+      "id": "article-6",
       "description": "An old diner.",
       "imageUrl": "/images/articlesf/6.jpg",
       "imageHint": "old diner"
     },
     {
-      "id": "rebot-1",
+      "id": "article-7",
       "description": "A small friendly robot.",
       "imageUrl": "/images/articlesf/7.jpg",
       "imageHint": "small robot"
     },
     {
-      "id": "rebot-2",
+      "id": "article-8",
       "description": "A factory on fire.",
       "imageUrl": "/images/articlesf/8.jpg",
       "imageHint": "factory fire"
     },
     {
-      "id": "stymcafe-1",
+      "id": "article-9",
       "description": "A cup of coffee with a bolt in it.",
       "imageUrl": "/images/articlesf/9.jpg",
       "imageHint": "coffee bolt"
     },
     {
-      "id": "stymcafe-2",
+      "id": "article-10",
       "description": "A grumpy barista.",
       "imageUrl": "/images/articlesf/10.jpg",
       "imageHint": "grumpy barista"
     },
     {
-      "id": "university-1",
+      "id": "article-11",
       "description": "An old university building.",
       "imageUrl": "/images/articlesf/11.jpg",
       "imageHint": "old university"
     },
     {
-      "id": "university-2",
+      "id": "article-12",
       "description": "A dirigible or airship.",
       "imageUrl": "/images/articlesf/12.jpg",
       "imageHint": "airship"
     },
     {
-      "id": "water-1",
+      "id": "article-13",
       "description": "A toilet overflowing with mud.",
       "imageUrl": "/images/articlesf/13.jpg",
       "imageHint": "muddy toilet"
     },
     {
-      "id": "water-2",
+      "id": "article-14",
       "description": "A box of powder with a water logo.",
       "imageUrl": "/images/articlesf/14.jpg",
       "imageHint": "powder box"
