@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { articles } from '@/lib/articles';
+import { articles, type Article } from '@/lib/articles';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -32,6 +32,7 @@ const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to
 
 const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const [gateInput, setGateInput] = useState('');
+  const [filteredArticles, setFilteredArticles] = useState<Article[]>(articles);
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [revealedLetters, setRevealedLetters] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -72,53 +73,51 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   }, [showOpinionViolation]);
 
   useEffect(() => {
-    const flashSchedule = [
-        { adIndex: 0, delay: 10000 },
-        { adIndex: 1, delay: 15000 },
-        { adIndex: 2, delay: 20000 },
-        { adIndex: 3, delay: 25000 },
-    ];
-    const totalCycleTime = 10000 + 15000 + 20000 + 25000;
-    
-    let timeouts: NodeJS.Timeout[] = [];
-
-    const setupTimeouts = () => {
-        let cumulativeDelay = 0;
-        flashSchedule.forEach(item => {
-            const timeout = setTimeout(() => {
-                // Only show a new ad if one isn't already showing.
-                // This check is important because the user might not close the previous ad in time.
-                setFlashingAdToShow(prev => prev === null ? adContent[item.adIndex] : prev);
-            }, cumulativeDelay + item.delay);
-            timeouts.push(timeout);
-            cumulativeDelay += item.delay;
-        });
+    const timeouts: NodeJS.Timeout[] = [];
+  
+    const scheduleAd = (adIndex: number, delay: number) => {
+      const timeout = setTimeout(() => {
+        setFlashingAdToShow(adContent[adIndex]);
+      }, delay);
+      timeouts.push(timeout);
     };
-
-    const runCycle = () => {
-      // Clear any existing timeouts before starting a new cycle
-      timeouts.forEach(clearTimeout);
-      timeouts = [];
-      setupTimeouts();
-    }
-
-    runCycle(); // Initial run
-    const loopInterval = setInterval(runCycle, totalCycleTime);
-
+  
+    const adCycle = () => {
+      timeouts.forEach(clearTimeout); // Clear previous timeouts
+      scheduleAd(0, 10000); // 10s
+      scheduleAd(1, 25000); // 10s + 15s
+      scheduleAd(2, 45000); // 25s + 20s
+      scheduleAd(3, 70000); // 45s + 25s
+    };
+  
+    adCycle();
+    const interval = setInterval(adCycle, 70000 + 1000); // Loop after the last ad + buffer
+  
     return () => {
       timeouts.forEach(clearTimeout);
-      clearInterval(loopInterval);
+      clearInterval(interval);
     };
   }, []);
 
 
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (gateInput.replace(/\s/g, '').toLowerCase() === 'coldfries') {
+    const searchTerm = gateInput.toLowerCase().trim();
+
+    if (searchTerm.replace(/\s/g, '') === 'coldfries') {
       onPasswordSuccess();
+      return;
+    }
+
+    if (searchTerm === '') {
+      setFilteredArticles(articles);
     } else {
-      setGateInput('ACCESS DENIED');
-      setTimeout(() => setGateInput(''), 1000);
+      const filtered = articles.filter(article => 
+        article.title.toLowerCase().includes(searchTerm) ||
+        article.summary.toLowerCase().includes(searchTerm) ||
+        article.content.toLowerCase().includes(searchTerm)
+      );
+      setFilteredArticles(filtered);
     }
   };
 
@@ -226,7 +225,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 
       <div className="container mx-auto p-4 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
         <main className="lg:col-span-2 space-y-8">
-          {articles.map((article) => {
+          {filteredArticles.length > 0 ? filteredArticles.map((article) => {
             const articleImage = PlaceHolderImages.find(p => p.id === article.image1Id);
             return (
               <Link href={`/articles/${article.id}`} key={article.id}>
@@ -239,7 +238,13 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
                 </Card>
               </Link>
             );
-          })}
+          }) : (
+            <Card className="bg-card/80 border-2 border-primary/50 p-4 ragged-edges">
+              <CardContent className="p-4 md:p-6 text-center">
+                <p className="font-body text-2xl text-primary">No articles found matching your search.</p>
+              </CardContent>
+            </Card>
+          )}
         </main>
         
         <aside className="space-y-8 lg:sticky top-8 self-start">
@@ -296,5 +301,3 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 };
 
 export default PhaseNewsletter;
-
-    
