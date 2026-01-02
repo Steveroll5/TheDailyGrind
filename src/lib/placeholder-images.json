@@ -87,25 +87,25 @@
     {
       "id": "ad-visor",
       "description": "Optimism Visors Ad",
-      "imageUrl": "/images/ads/ad-visor.jpg",
+      "imageUrl": "/images/ads/ad1.jpg",
       "imageHint": "goggles"
     },
     {
       "id": "ad-water",
       "description": "Dehydrated Water Ad",
-      "imageUrl": "/images/ads/ad-water.jpg",
+      "imageUrl": "/images/ads/ad2.jpg",
       "imageHint": "water bottle"
     },
     {
       "id": "ad-paste",
       "description": "Grey-Scale Flavor Paste",
-      "imageUrl": "/images/ads/ad-paste.jpg",
+      "imageUrl": "/images/ads/ad3.jpg",
       "imageHint": "food paste"
     },
     {
       "id": "ad-leg",
       "description": "Surplus Decibot Leg",
-      "imageUrl": "/images/ads/ad-leg.jpg",
+      "imageUrl": "/images/ads/ad4.jpg",
       "imageHint": "robot leg"
     }
   ]
