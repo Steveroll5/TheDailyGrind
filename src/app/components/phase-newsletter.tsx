@@ -45,15 +45,23 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 
   useEffect(() => {
     if (showOpinionViolation) {
+        document.body.setAttribute('data-theme', 'phaseopinionviolation');
+        document.documentElement.classList.add('dark');
       const timer = setTimeout(() => {
         setGlitchingOut(true);
         setTimeout(() => {
           setShowOpinionViolation(false);
           setGlitchingOut(false);
+          document.body.setAttribute('data-theme', 'newsletter');
+          document.documentElement.classList.remove('dark');
         }, 1500); // Duration of the glitch effect
       }, 5000); // 5 seconds on the violation screen
 
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(timer);
+        document.body.setAttribute('data-theme', 'newsletter');
+        document.documentElement.classList.remove('dark');
+      }
     }
   }, [showOpinionViolation]);
 

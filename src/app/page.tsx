@@ -15,17 +15,21 @@ export default function Home() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (pathname.startsWith('/articles') || pathname.startsWith('/news')) {
+    // We will let phase-newsletter handle its own theme changes for the opinion violation
+    if (phase === 'NEWSLETTER' && (pathname.startsWith('/articles') || pathname.startsWith('/news'))) {
       document.body.setAttribute('data-theme', 'newsletter');
       document.documentElement.classList.remove('dark');
-    } else {
-      document.body.setAttribute('data-theme', phase.toLowerCase());
-      if (phase === 'NEWSLETTER') {
-        document.documentElement.classList.remove('dark');
-      } else {
-        document.documentElement.classList.add('dark');
-      }
+      return;
     }
+    
+    if (phase !== 'NEWSLETTER') {
+        document.body.setAttribute('data-theme', phase.toLowerCase());
+        document.documentElement.classList.add('dark');
+    } else {
+        document.body.setAttribute('data-theme', 'newsletter');
+        document.documentElement.classList.remove('dark');
+    }
+
   }, [phase, pathname]);
 
   const handlePasswordSuccess = () => {

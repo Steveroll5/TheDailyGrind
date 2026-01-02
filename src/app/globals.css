@@ -79,7 +79,7 @@
     --ring: 105 100% 50%;
   }
   
-  body[data-theme='lockdown'], body[data-theme='phaseopinionviolation'] {
+  body[data-theme='lockdown'] {
     --background: 0 100% 10%;
     --foreground: 0 100% 50%;
     --card: 0 100% 15%;
@@ -99,6 +99,12 @@
     --border: 0 100% 25%;
     --input: 0 100% 15%;
     --ring: 0 100% 50%;
+  }
+
+  body[data-theme='phaseopinionviolation'] {
+    --background: 0 80% 40%; /* red */
+    --foreground: 30 100% 50%; /* orange */
+    --destructive: 30 100% 70%;
   }
   
   body[data-theme='lockdown'] .text-glow,
