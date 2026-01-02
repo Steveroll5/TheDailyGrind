@@ -17,7 +17,7 @@ const ViolationModal = ({ onClose }: ViolationModalProps) => {
         <div className="text-center font-code">
           <h2 className="text-3xl font-bold mb-4">HR VIOLATION TICKET</h2>
           <p className="text-xl mb-6">Wage Theft Detected.</p>
-          <p className="text-2xl font-bold">Penalty: 50 Credits.</p>
+          <p className="text-2xl font-bold">Penalty: 50 Valles.</p>
         </div>
         <button
           onClick={onClose}
