@@ -23,7 +23,7 @@ const FlashingAd = ({ ad, onClose, onAdClick }: FlashingAdProps) => {
   const adImage = PlaceHolderImages.find(p => p.id === ad.imageId);
 
   return (
-    <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center animate-pulse-alarm" onClick={onClose}>
+    <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center" onClick={onClose}>
       <Card 
         className="relative w-full max-w-lg bg-card border-4 border-destructive shadow-2xl animate-stamp-in-harsh"
         onClick={(e) => {
