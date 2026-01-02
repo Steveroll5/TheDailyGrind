@@ -11,15 +11,16 @@ import { Button } from '@/components/ui/button';
 import ViolationModal from './violation-modal';
 import GlitchLetter from './glitch-letter';
 import Redacted from './redacted';
+import PhaseOpinionViolation from './phase-opinion-violation';
 
 type PhaseNewsletterProps = {
   onPasswordSuccess: () => void;
 };
 
 const adContent = [
-    { id: 1, title: 'The Optimism Visor™', imageId: 'ad-visor', letter: 'C', tagline: "Hate the smog? Pretend it’s not there!", smallPrint: "Caution: Do not use near open pits." },
-    { id: 2, title: 'Krovus Dehydrated Water', imageId: 'ad-water', letter: 'O', tagline: "Lightweight! Portable! Just add... wait.", smallPrint: "Warning: May cause internal dunes." },
-    { id: 3, title: 'Grey-Scale Flavor Paste', imageId: 'ad-paste', letter: 'L', tagline: "Lunch in 3 seconds flat!", smallPrint: "Now with 5% less chalk!" },
+    { id: 1, title: 'The Optimism Visor™', imageId: 'ad-visor', letter: 'C', tagline: "Hate the smog? Pretend it’s not there!", smallPrint: "Filters out grey color spectrums and safety warning signs. (Caution: Do not use near open pits)." },
+    { id: 2, title: 'Krovus Dehydrated Water', imageId: 'ad-water', letter: 'O', tagline: "Lightweight! Portable! Just add... wait.", smallPrint: "Warning: Do not ingest powder directly. May cause internal dunes." },
+    { id: 3, title: 'Grey-Scale Flavor Paste', imageId: 'ad-paste', letter: 'L', tagline: "Lunch in 3 seconds flat!", smallPrint: "Now with 5% less chalk! Flammable if exposed to direct optimism." },
     { id: 4, title: <>Surplus <Redacted>Decibot</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you. But it does twitch when you yell at it." },
 ];
 
@@ -31,6 +32,8 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const [revealedLetters, setRevealedLetters] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeAd, setActiveAd] = useState<(typeof adContent)[0] | null>(null);
+  const [showOpinionViolation, setShowOpinionViolation] = useState(false);
+  const [glitchingOut, setGlitchingOut] = useState(false);
 
   useEffect(() => {
     const adInterval = setInterval(() => {
@@ -38,6 +41,20 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     }, 5000);
     return () => clearInterval(adInterval);
   }, []);
+
+  useEffect(() => {
+    if (showOpinionViolation) {
+      const timer = setTimeout(() => {
+        setGlitchingOut(true);
+        setTimeout(() => {
+          setShowOpinionViolation(false);
+          setGlitchingOut(false);
+        }, 1500); // Duration of the glitch effect
+      }, 5000); // 5 seconds on the violation screen
+
+      return () => clearTimeout(timer);
+    }
+  }, [showOpinionViolation]);
 
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -62,6 +79,19 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     }
     setActiveAd(null);
   };
+
+  const handleOpinionClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowOpinionViolation(true);
+  };
+
+  if (glitchingOut) {
+    return <PhaseGlitch />;
+  }
+
+  if (showOpinionViolation) {
+    return <PhaseOpinionViolation />;
+  }
 
   const Ticker = () => (
     <div className="bg-primary/20 border-y border-primary/50 text-primary-foreground/80 overflow-hidden relative h-10 flex items-center">
@@ -96,7 +126,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
         <div className="flex space-x-8 font-headline text-xl text-amber-100">
           <Link href="/" className="hover:text-primary">Home</Link>
           <Link href="/news" className="hover:text-primary">News</Link>
-          <a href="#" className="hover:text-primary">Opinion</a>
+          <a href="#" onClick={handleOpinionClick} className="hover:text-primary cursor-pointer">Opinion</a>
         </div>
       </nav>
 

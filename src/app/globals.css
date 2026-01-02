@@ -4,47 +4,7 @@
 
 @layer base {
   :root {
-    --background: 40 67% 98%;
-    --foreground: 20 15% 20%;
-    --card: 40 60% 95%;
-    --card-foreground: 20 15% 20%;
-    --popover: 40 67% 98%;
-    --popover-foreground: 20 15% 20%;
-    --primary: 38 67% 50%; /* brass */
-    --primary-foreground: 20 15% 5%;
-    --secondary: 12 53% 40%; /* copper */
-    --secondary-foreground: 0 0% 100%;
-    --muted: 40 20% 90%;
-    --muted-foreground: 20 10% 40%;
-    --accent: 12 53% 45%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 38 40% 60%;
-    --input: 40 20% 92%;
-    --ring: 38 67% 50%;
-  }
-
-  .dark {
-    --background: 0 0% 0%;
-    --foreground: 105 100% 50%;
-    --card: 0 0% 5%;
-    --card-foreground: 105 100% 50%;
-    --popover: 0 0% 0%;
-    --popover-foreground: 105 100% 50%;
-    --primary: 105 100% 50%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 41 100% 50%;
-    --secondary-foreground: 0 0% 0%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 105 50% 60%;
-    --accent: 0 0% 15%;
-    --accent-foreground: 105 100% 50%;
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 0 0% 0%;
-    --border: 105 100% 20%;
-    --input: 0 0% 10%;
-    --ring: 105 100% 50%;
+    --radius: 0.5rem;
   }
 
   body[data-theme='newsletter'] {
@@ -94,6 +54,7 @@
   body[data-theme='glitch'] {
     --background: 220 80% 30%;
     --foreground: 0 0% 100%;
+    --destructive: 0 100% 50%;
   }
 
   body[data-theme='terminal'] {
@@ -118,7 +79,7 @@
     --ring: 105 100% 50%;
   }
   
-  body[data-theme='lockdown'] {
+  body[data-theme='lockdown'], body[data-theme='phaseopinionviolation'] {
     --background: 0 100% 10%;
     --foreground: 0 100% 50%;
     --card: 0 100% 15%;
@@ -138,6 +99,11 @@
     --border: 0 100% 25%;
     --input: 0 100% 15%;
     --ring: 0 100% 50%;
+  }
+  
+  body[data-theme='lockdown'] .text-glow,
+  body[data-theme='phaseopinionviolation'] .text-glow {
+    --destructive: 0 100% 80%;
   }
 }
 

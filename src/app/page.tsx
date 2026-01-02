@@ -16,10 +16,10 @@ export default function Home() {
 
   useEffect(() => {
     if (pathname.startsWith('/articles') || pathname.startsWith('/news')) {
-      document.documentElement.setAttribute('data-theme', 'newsletter');
+      document.body.setAttribute('data-theme', 'newsletter');
       document.documentElement.classList.remove('dark');
     } else {
-      document.documentElement.setAttribute('data-theme', phase.toLowerCase());
+      document.body.setAttribute('data-theme', phase.toLowerCase());
       if (phase === 'NEWSLETTER') {
         document.documentElement.classList.remove('dark');
       } else {
