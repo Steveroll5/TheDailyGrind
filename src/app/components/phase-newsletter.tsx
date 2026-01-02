@@ -14,6 +14,8 @@ import Redacted from './redacted';
 import PhaseOpinionViolation from './phase-opinion-violation';
 import PhaseGlitch from './phase-glitch';
 import PagePeel from './page-peel';
+import FlashingAd from './flashing-ad';
+import Footer from './footer';
 
 type PhaseNewsletterProps = {
   onPasswordSuccess: () => void;
@@ -38,6 +40,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const [glitchingOut, setGlitchingOut] = useState(false);
   const [showPeel, setShowPeel] = useState(true);
   const [peelGlitch, setPeelGlitch] = useState(false);
+  const [showFlashingAd, setShowFlashingAd] = useState(false);
 
   useEffect(() => {
     const adInterval = setInterval(() => {
@@ -67,6 +70,13 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
       }
     }
   }, [showOpinionViolation]);
+
+  useEffect(() => {
+    const flashingAdInterval = setInterval(() => {
+      setShowFlashingAd(true);
+    }, 10000);
+    return () => clearInterval(flashingAdInterval);
+  }, []);
 
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -146,9 +156,11 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const adImage = PlaceHolderImages.find(p => p.id === currentAd.imageId);
 
   return (
-    <div className="w-full min-h-screen grain-texture relative">
+    <div className="w-full min-h-screen grain-texture relative bg-background">
        {showPeel && <PagePeel onClick={handlePeelClick} />}
        {isModalOpen && <ViolationModal onClose={handleCloseModal} />}
+       {showFlashingAd && <FlashingAd ad={currentAd} onClose={() => setShowFlashingAd(false)} />}
+
 
       <nav className="relative leather-texture border-b-4 border-secondary shadow-md p-4 flex justify-center items-center">
         <Rivet style={{ top: '6px', left: '6px' }} />
@@ -186,7 +198,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
           })}
         </main>
         
-        <aside className="space-y-8">
+        <aside className="space-y-8 lg:sticky top-8 self-start">
           <Card className="bg-card/80 border-2 border-primary/50">
             <CardContent className="p-6">
               <h3 className="font-headline text-2xl mb-4 text-primary">Search</h3>
@@ -234,6 +246,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
           </Card>
         </aside>
       </div>
+      <Footer />
     </div>
   );
 };
