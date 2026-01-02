@@ -13,6 +13,7 @@ import GlitchLetter from './glitch-letter';
 import Redacted from './redacted';
 import PhaseOpinionViolation from './phase-opinion-violation';
 import PhaseGlitch from './phase-glitch';
+import PagePeel from './page-peel';
 
 type PhaseNewsletterProps = {
   onPasswordSuccess: () => void;
@@ -35,6 +36,8 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const [activeAd, setActiveAd] = useState<(typeof adContent)[0] | null>(null);
   const [showOpinionViolation, setShowOpinionViolation] = useState(false);
   const [glitchingOut, setGlitchingOut] = useState(false);
+  const [showPeel, setShowPeel] = useState(true);
+  const [peelGlitch, setPeelGlitch] = useState(false);
 
   useEffect(() => {
     const adInterval = setInterval(() => {
@@ -94,7 +97,15 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     setShowOpinionViolation(true);
   };
 
-  if (glitchingOut) {
+  const handlePeelClick = () => {
+    setShowPeel(false);
+    setPeelGlitch(true);
+    setTimeout(() => {
+      setPeelGlitch(false);
+    }, 2000);
+  };
+
+  if (glitchingOut || peelGlitch) {
     return <PhaseGlitch />;
   }
 
@@ -124,7 +135,8 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const adImage = PlaceHolderImages.find(p => p.id === currentAd.imageId);
 
   return (
-    <div className="w-full min-h-screen grain-texture">
+    <div className="w-full min-h-screen grain-texture relative">
+       {showPeel && <PagePeel onClick={handlePeelClick} />}
        {isModalOpen && <ViolationModal onClose={handleCloseModal} />}
 
       <nav className="relative leather-texture border-b-4 border-secondary shadow-md p-4 flex justify-center items-center">
