@@ -12,6 +12,7 @@ import ViolationModal from './violation-modal';
 import GlitchLetter from './glitch-letter';
 import Redacted from './redacted';
 import PhaseOpinionViolation from './phase-opinion-violation';
+import PhaseGlitch from './phase-glitch';
 
 type PhaseNewsletterProps = {
   onPasswordSuccess: () => void;
