@@ -18,7 +18,7 @@ export default function NewsPage() {
         <main className="space-y-8">
           {articles.map((article) => (
             <Link href={`/articles/${article.id}`} key={article.id}>
-              <Card className="bg-card/80 border-2 border-secondary/50 p-2 ragged-edges hover:border-primary transition-all group">
+              <Card className="bg-card/80 border-2 border-secondary/50 p-4 ragged-edges hover:border-primary transition-all group">
                 <CardContent className="p-4 md:p-6">
                   <h2 className="font-headline text-4xl mb-4 text-secondary group-hover:text-primary">{article.title}</h2>
                   <p className="font-body text-lg leading-relaxed">{article.summary}</p>

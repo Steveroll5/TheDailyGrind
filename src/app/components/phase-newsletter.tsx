@@ -174,7 +174,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
             const articleImage = PlaceHolderImages.find(p => p.id === article.image1Id);
             return (
               <Link href={`/articles/${article.id}`} key={article.id}>
-                <Card className="bg-card/80 border-2 border-secondary/50 p-2 ragged-edges hover:border-primary transition-all">
+                <Card className="bg-card/80 border-2 border-secondary/50 p-4 ragged-edges hover:border-primary transition-all">
                   <CardContent className="p-4 md:p-6">
                     <h2 className="font-headline text-4xl mb-4 text-secondary group-hover:text-primary">{article.title}</h2>
                     {articleImage && <Image src={articleImage.imageUrl} data-ai-hint={articleImage.imageHint} alt={articleImage.description} width={600} height={400} className="w-full h-auto mb-4 object-cover" />}

@@ -48,7 +48,7 @@ export default function ArticlePage() {
       </header>
 
       <div className="container mx-auto">
-        <Card className="bg-card/80 border-2 border-primary/50 p-2 ragged-edges">
+        <Card className="bg-card/80 border-2 border-primary/50 p-4 ragged-edges">
           <CardContent className="p-4 md:p-6">
             <h2 className="font-headline text-4xl md:text-5xl mb-6 text-primary">{article.title}</h2>
             
