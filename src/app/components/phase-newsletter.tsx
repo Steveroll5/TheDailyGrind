@@ -28,8 +28,6 @@ const adContent = [
     { id: 4, title: <>Surplus <Redacted>Decibot</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you. But it does twitch when you yell at it." },
 ];
 
-const flashingAdContent = adContent[0];
-
 const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 border border-yellow-900" />;
 
 const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
@@ -42,7 +40,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const [glitchingOut, setGlitchingOut] = useState(false);
   const [showPeel, setShowPeel] = useState(true);
   const [peelGlitch, setPeelGlitch] = useState(false);
-  const [showFlashingAd, setShowFlashingAd] = useState(false);
+  const [flashingAdToShow, setFlashingAdToShow] = useState<(typeof adContent)[0] | null>(null);
 
   useEffect(() => {
     const adInterval = setInterval(() => {
@@ -74,10 +72,18 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   }, [showOpinionViolation]);
 
   useEffect(() => {
-    const flashingAdInterval = setInterval(() => {
-      setShowFlashingAd(true);
-    }, 10000);
-    return () => clearInterval(flashingAdInterval);
+    const timeout1 = setTimeout(() => {
+      setFlashingAdToShow(adContent[0]);
+    }, 10000); // 10 seconds
+
+    const timeout2 = setTimeout(() => {
+      setFlashingAdToShow(adContent[1]);
+    }, 25000); // 10s + 15s
+
+    return () => {
+      clearTimeout(timeout1);
+      clearTimeout(timeout2);
+    };
   }, []);
 
   const handleGateSubmit = (e: React.FormEvent) => {
@@ -119,8 +125,13 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 
   const handleFlashingAdClick = () => {
     setIsModalOpen(true);
-    setShowFlashingAd(false);
+    setFlashingAdToShow(null);
   };
+  
+  const handleFlashingAdClose = () => {
+    setFlashingAdToShow(null);
+  };
+
 
   if (glitchingOut || peelGlitch) {
     return <PhaseGlitch />;
@@ -166,7 +177,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     <div className="w-full min-h-screen grain-texture relative bg-background">
        {showPeel && <PagePeel onClick={handlePeelClick} />}
        {isModalOpen && <ViolationModal onClose={handleCloseModal} />}
-       {showFlashingAd && <FlashingAd ad={flashingAdContent} onClose={() => setShowFlashingAd(false)} onAdClick={handleFlashingAdClick} />}
+       {flashingAdToShow && <FlashingAd ad={flashingAdToShow} onClose={handleFlashingAdClose} onAdClick={handleFlashingAdClick} />}
 
 
       <nav className="relative leather-texture border-b-4 border-secondary shadow-md p-4 flex justify-center items-center">
@@ -259,5 +270,3 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 };
 
 export default PhaseNewsletter;
-
-    
