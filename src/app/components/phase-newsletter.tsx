@@ -105,6 +105,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     const searchTerm = gateInput.toLowerCase().trim();
 
     if (searchTerm.replace(/\s/g, '') === 'coldfries') {
+      setGateInput('');
       onPasswordSuccess();
       return;
     }
@@ -301,3 +302,5 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 };
 
 export default PhaseNewsletter;
+
+    
