@@ -73,39 +73,43 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 
   useEffect(() => {
     const flashSchedule = [
-      { adIndex: 0, delay: 10000 },  // 10s
-      { adIndex: 1, delay: 15000 },  // 10s + 15s = 25s
-      { adIndex: 2, delay: 20000 },  // 25s + 20s = 45s
-      { adIndex: 3, delay: 25000 },  // 45s + 25s = 70s
+        { adIndex: 0, delay: 10000 },
+        { adIndex: 1, delay: 15000 },
+        { adIndex: 2, delay: 20000 },
+        { adIndex: 3, delay: 25000 },
     ];
+    const totalCycleTime = 10000 + 15000 + 20000 + 25000;
     
-    let cumulativeDelay = 0;
-    const timeouts: NodeJS.Timeout[] = [];
+    let timeouts: NodeJS.Timeout[] = [];
 
     const setupTimeouts = () => {
+        let cumulativeDelay = 0;
         flashSchedule.forEach(item => {
-            cumulativeDelay += item.delay;
             const timeout = setTimeout(() => {
-                if (flashingAdToShow === null) { // Only show if another isn't already active
-                    setFlashingAdToShow(adContent[item.adIndex]);
-                }
-            }, cumulativeDelay);
+                // Only show a new ad if one isn't already showing.
+                // This check is important because the user might not close the previous ad in time.
+                setFlashingAdToShow(prev => prev === null ? adContent[item.adIndex] : prev);
+            }, cumulativeDelay + item.delay);
             timeouts.push(timeout);
+            cumulativeDelay += item.delay;
         });
     };
-    
-    setupTimeouts(); // Initial setup
 
-    const loopInterval = setInterval(() => {
-        cumulativeDelay = 0;
-        setupTimeouts();
-    }, cumulativeDelay); // This will be the total time for one cycle
+    const runCycle = () => {
+      // Clear any existing timeouts before starting a new cycle
+      timeouts.forEach(clearTimeout);
+      timeouts = [];
+      setupTimeouts();
+    }
+
+    runCycle(); // Initial run
+    const loopInterval = setInterval(runCycle, totalCycleTime);
 
     return () => {
       timeouts.forEach(clearTimeout);
       clearInterval(loopInterval);
     };
-  }, [flashingAdToShow]);
+  }, []);
 
 
   const handleGateSubmit = (e: React.FormEvent) => {
@@ -292,3 +296,5 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 };
 
 export default PhaseNewsletter;
+
+    
