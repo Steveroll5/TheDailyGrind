@@ -15,7 +15,7 @@ export default function Home() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (pathname.startsWith('/articles')) {
+    if (pathname.startsWith('/articles') || pathname.startsWith('/news')) {
       document.documentElement.setAttribute('data-theme', 'newsletter');
       document.documentElement.classList.remove('dark');
     } else {
@@ -60,8 +60,8 @@ export default function Home() {
     }
   };
 
-  if (pathname.startsWith('/articles')) {
-    return null; // The article page will be rendered by its own component
+  if (pathname.startsWith('/articles') || pathname.startsWith('/news')) {
+    return null; // The article/news page will be rendered by its own component
   }
 
   return (
