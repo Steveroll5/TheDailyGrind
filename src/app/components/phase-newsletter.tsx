@@ -159,7 +159,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     <div className="w-full min-h-screen grain-texture relative bg-background">
        {showPeel && <PagePeel onClick={handlePeelClick} />}
        {isModalOpen && <ViolationModal onClose={handleCloseModal} />}
-       {showFlashingAd && <FlashingAd ad={currentAd} onClose={() => setShowFlashingAd(false)} />}
+       {showFlashingAd && <FlashingAd ad={currentAd} onClose={() => setShowFlashingAd(false)} onAdClick={() => setIsModalOpen(true)} />}
 
 
       <nav className="relative leather-texture border-b-4 border-secondary shadow-md p-4 flex justify-center items-center">

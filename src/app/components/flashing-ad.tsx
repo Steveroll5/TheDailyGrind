@@ -16,19 +16,26 @@ type FlashingAdProps = {
     smallPrint: string;
   };
   onClose: () => void;
+  onAdClick: () => void;
 };
 
-const FlashingAd = ({ ad, onClose }: FlashingAdProps) => {
+const FlashingAd = ({ ad, onClose, onAdClick }: FlashingAdProps) => {
   const adImage = PlaceHolderImages.find(p => p.id === ad.imageId);
 
   return (
     <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center animate-pulse-alarm" onClick={onClose}>
       <Card 
         className="relative w-full max-w-lg bg-card border-4 border-destructive shadow-2xl animate-stamp-in-harsh"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => {
+          e.stopPropagation();
+          onAdClick();
+        }}
       >
         <button
-          onClick={onClose}
+          onClick={(e) => {
+            e.stopPropagation();
+            onClose();
+          }}
           className="absolute -top-4 -right-4 text-background bg-destructive rounded-full z-10 hover:scale-110 transition-transform"
           aria-label="Close ad"
         >
