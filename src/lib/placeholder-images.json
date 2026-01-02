@@ -3,85 +3,85 @@
     {
       "id": "anniversary-1",
       "description": "An abandoned factory with rust.",
-      "imageUrl": "/images/articles/anniversary-1.jpg",
+      "imageUrl": "/images/articlesf/anniversary-1.jpg",
       "imageHint": "abandoned factory"
     },
     {
       "id": "anniversary-2",
       "description": "A dark corridor with mechanical clicking sounds.",
-      "imageUrl": "/images/articles/anniversary-2.jpg",
+      "imageUrl": "/images/articlesf/anniversary-2.jpg",
       "imageHint": "dark corridor"
     },
     {
       "id": "arkeme-1",
       "description": "A person glitching or flickering.",
-      "imageUrl": "/images/articles/arkeme-1.jpg",
+      "imageUrl": "/images/articlesf/arkeme-1.jpg",
       "imageHint": "glitching person"
     },
     {
       "id": "arkeme-2",
       "description": "A futuristic cityscape.",
-      "imageUrl": "/images/articles/arkeme-2.jpg",
+      "imageUrl": "/images/articlesf/arkeme-2.jpg",
       "imageHint": "futuristic city"
     },
     {
       "id": "cold-fries-1",
       "description": "Frozen french fries.",
-      "imageUrl": "/images/articles/cold-fries-1.jpg",
+      "imageUrl": "/images/articlesf/cold-fries-1.jpg",
       "imageHint": "frozen fries"
     },
     {
       "id": "cold-fries-2",
       "description": "An old diner.",
-      "imageUrl": "/images/articles/cold-fries-2.jpg",
+      "imageUrl": "/images/articlesf/cold-fries-2.jpg",
       "imageHint": "old diner"
     },
     {
       "id": "rebot-1",
       "description": "A small friendly robot.",
-      "imageUrl": "/images/articles/rebot-1.jpg",
+      "imageUrl": "/images/articlesf/rebot-1.jpg",
       "imageHint": "small robot"
     },
     {
       "id": "rebot-2",
       "description": "A factory on fire.",
-      "imageUrl": "/images/articles/rebot-2.jpg",
+      "imageUrl": "/images/articlesf/rebot-2.jpg",
       "imageHint": "factory fire"
     },
     {
       "id": "stymcafe-1",
       "description": "A cup of coffee with a bolt in it.",
-      "imageUrl": "/images/articles/stymcafe-1.jpg",
+      "imageUrl": "/images/articlesf/stymcafe-1.jpg",
       "imageHint": "coffee bolt"
     },
     {
       "id": "stymcafe-2",
       "description": "A grumpy barista.",
-      "imageUrl": "/images/articles/stymcafe-2.jpg",
+      "imageUrl": "/images/articlesf/stymcafe-2.jpg",
       "imageHint": "grumpy barista"
     },
     {
       "id": "university-1",
       "description": "An old university building.",
-      "imageUrl": "/images/articles/university-1.jpg",
+      "imageUrl": "/images/articlesf/university-1.jpg",
       "imageHint": "old university"
     },
     {
       "id": "university-2",
       "description": "A dirigible or airship.",
-      "imageUrl": "/images/articles/university-2.jpg",
+      "imageUrl": "/images/articlesf/university-2.jpg",
       "imageHint": "airship"
     },
     {
       "id": "water-1",
       "description": "A toilet overflowing with mud.",
-      "imageUrl": "/images/articles/water-1.jpg",
+      "imageUrl": "/images/articlesf/water-1.jpg",
       "imageHint": "muddy toilet"
     },
     {
       "id": "water-2",
       "description": "A box of powder with a water logo.",
-      "imageUrl": "/images/articles/water-2.jpg",
+      "imageUrl": "/images/articlesf/water-2.jpg",
       "imageHint": "powder box"
     },
     {
