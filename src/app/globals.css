@@ -329,4 +329,25 @@
     text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
   }
 }
+
+@keyframes jumpscare-flash {
+  0% { opacity: 0; }
+  10%, 30%, 50%, 70%, 90% { opacity: 1; }
+  20%, 40%, 60%, 80% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+@keyframes jumpscare-glitch {
+  0% { transform: translate(0) scale(1.1); clip-path: inset(10% 20% 70% 5%); }
+  10% { transform: translate(-5px, 5px) scale(1.1); clip-path: inset(80% 10% 5% 15%); }
+  20% { transform: translate(5px, -5px) scale(1.1); clip-path: inset(45% 5% 45% 5%); }
+  30% { transform: translate(-2px, 2px) scale(1.1); clip-path: inset(10% 80% 70% 10%); }
+  40% { transform: translate(2px, -2px) scale(1.1); clip-path: inset(60% 30% 30% 30%); }
+  50% { transform: translate(0) scale(1.1); clip-path: inset(25% 15% 55% 5%); }
+  60% { transform: translate(-3px, 3px) scale(1.1); clip-path: inset(90% 5% 5% 5%); }
+  70% { transform: translate(3px, -3px) scale(1.1); clip-path: inset(50% 50% 10% 10%); }
+  80% { transform: translate(-1px, 1px) scale(1.1); clip-path: inset(5% 5% 90% 80%); }
+  90% { transform: translate(1px, -1px) scale(1.1); clip-path: inset(70% 10% 20% 60%); }
+  100% { transform: translate(0) scale(1.1); clip-path: inset(40% 20% 40% 20%); }
+}
     

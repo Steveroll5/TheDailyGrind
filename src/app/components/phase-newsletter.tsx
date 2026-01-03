@@ -18,6 +18,7 @@ import FlashingAd from './flashing-ad';
 import Footer from './footer';
 import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import PhaseJumpscare from './phase-jumpscare';
 
 
 type PhaseNewsletterProps = {
@@ -153,7 +154,8 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     setPeelGlitch(true);
     setTimeout(() => {
       setPeelGlitch(false);
-    }, 2000);
+      setShowPeel(true);
+    }, 700); // Jumpscare duration
   };
   
   const handleFlashingAdClick = () => {
@@ -168,8 +170,12 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     setFlashingAdToShow(null);
   };
 
-  if (glitchingOut || peelGlitch) {
+  if (glitchingOut) {
     return <PhaseGlitch />;
+  }
+  
+  if (peelGlitch) {
+    return <PhaseJumpscare />;
   }
 
   if (showOpinionViolation) {
