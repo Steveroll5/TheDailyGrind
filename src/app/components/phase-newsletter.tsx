@@ -1,6 +1,6 @@
 
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { articles, type Article } from '@/lib/articles';
@@ -99,7 +99,6 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     };
   }, []);
 
-
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const searchTerm = gateInput.toLowerCase().trim();
@@ -122,11 +121,11 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     }
   };
 
-  const handleAdClick = (ad: (typeof adContent)[0]) => {
+  const handleAdClick = useCallback((ad: (typeof adContent)[0]) => {
     if (revealedLetters.includes(ad.letter)) return;
     setActiveAd(ad);
     setIsModalOpen(true);
-  };
+  }, [revealedLetters]);
   
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -203,8 +202,10 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     <div className="w-full min-h-screen grain-texture relative bg-background">
        {showPeel && <PagePeel onClick={handlePeelClick} />}
        {isModalOpen && <ViolationModal onClose={handleCloseModal} />}
-       {flashingAdToShow && <FlashingAd ad={flashingAdToShow} onClose={handleFlashingAdClose} onAdClick={handleFlashingAdClick} />}
-
+       {flashingAdToShow && <FlashingAd ad={flashingAdToShow} onClose={handleFlashingAdClose} onAdClick={() => {
+            setIsModalOpen(true);
+            setFlashingAdToShow(null);
+       }} />}
 
       <nav className="relative leather-texture border-b-4 border-secondary shadow-md p-4 flex justify-center items-center">
         <Rivet style={{ top: '6px', left: '6px' }} />
@@ -302,5 +303,3 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 };
 
 export default PhaseNewsletter;
-
-    
