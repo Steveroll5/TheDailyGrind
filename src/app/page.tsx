@@ -29,7 +29,7 @@ export default function Home() {
   
   if (showGlitch) {
     return (
-      <main className="relative min-h-screen bg-background text-foreground transition-colors duration-500 overflow-hidden">
+      <main className="relative min-h-screen bg-background text-foreground transition-colors duration-500">
         <CRTOverlay />
         <div className="relative z-10 p-4 md:p-8">
             <PhaseGlitch />
@@ -41,7 +41,7 @@ export default function Home() {
   // Only render newsletter on the root path
   if (pathname === '/') {
     return (
-        <main className="relative min-h-screen bg-background text-foreground transition-colors duration-500 overflow-hidden">
+        <main className="relative min-h-screen bg-background text-foreground transition-colors duration-500">
             <div className="relative z-10">
                 <PhaseNewsletter onPasswordSuccess={handlePasswordSuccess} />
             </div>
