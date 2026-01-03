@@ -1,5 +1,5 @@
 'use client';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,6 +13,15 @@ type PhaseTerminalProps = {
 const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
     const [threatInput, setThreatInput] = useState('');
     const [trapError, setTrapError] = useState('');
+
+    useEffect(() => {
+        document.body.setAttribute('data-theme', 'terminal');
+        document.documentElement.classList.add('dark');
+        return () => {
+            document.body.removeAttribute('data-theme');
+            document.documentElement.classList.remove('dark');
+        }
+    }, []);
 
     const handleReportSubmit = (e: React.FormEvent) => {
         e.preventDefault();

@@ -52,15 +52,14 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 
   useEffect(() => {
     const scheduleAd = (adIndex: number, delay: number) => {
-      const timeout = setTimeout(() => {
+      timeouts.push(setTimeout(() => {
         setFlashingAdToShow(adContent[adIndex]);
-      }, delay);
-      timeouts.push(timeout);
+      }, delay));
     };
 
     const adCycle = () => {
       timeouts.forEach(clearTimeout);
-      timeouts.length = 0; // Clear the array
+      timeouts.length = 0;
       scheduleAd(0, 10000); // 10s
       scheduleAd(1, 25000); // 10s + 15s
       scheduleAd(2, 45000); // 25s + 20s
@@ -68,13 +67,14 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     };
 
     adCycle();
-    const cycleInterval = setInterval(adCycle, 71000); // Loop after the last ad + buffer
+    const cycleInterval = setInterval(adCycle, 71000); 
 
     return () => {
       timeouts.forEach(clearTimeout);
       clearInterval(cycleInterval);
     };
-  }, [timeouts]);
+  }, [timeouts, handleAdClick]);
+
 
   useEffect(() => {
     if (showOpinionViolation) {
@@ -85,7 +85,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
         setTimeout(() => {
           setShowOpinionViolation(false);
           setGlitchingOut(false);
-          document.body.setAttribute('data_theme', 'newsletter');
+          document.body.setAttribute('data-theme', 'newsletter');
           document.documentElement.classList.remove('dark');
         }, 1500); // Duration of the glitch effect
       }, 5000); // 5 seconds on the violation screen
@@ -142,6 +142,9 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   };
   
   const handleFlashingAdClick = () => {
+    if (flashingAdToShow) {
+        setActiveAd(flashingAdToShow);
+    }
     setIsModalOpen(true);
     setFlashingAdToShow(null);
   };
@@ -193,7 +196,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   return (
     <div className="w-full min-h-screen grain-texture relative bg-background">
        {showPeel && <PagePeel onClick={handlePeelClick} />}
-       {isModalOpen && <ViolationModal onClose={handleCloseModal} />}
+       {isModalOpen && activeAd && <ViolationModal onClose={handleCloseModal} />}
        {flashingAdToShow && <FlashingAd ad={flashingAdToShow} onClose={handleFlashingAdClose} onAdClick={handleFlashingAdClick} />}
 
       <nav className="relative leather-texture border-b-4 border-secondary shadow-md p-4 flex justify-center items-center">
@@ -258,27 +261,27 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
           <Card className="bg-card/80 border-2 border-secondary/50">
             <CardContent className="p-6">
               <h3 className="font-headline text-2xl mb-4 text-secondary">Advertisements</h3>
-              <div className="group relative aspect-[2/3] overflow-hidden border-2 border-dashed border-secondary/50 cursor-pointer" onClick={() => handleAdClick(currentAd)}>
-                {revealedLetters.includes(currentAd.letter) ? (
+              <div className="group relative aspect-[2/3] overflow-hidden border-2 border-dashed border-secondary/50 cursor-pointer" onClick={() => handleAdClick(adContent[0])}>
+                {revealedLetters.includes(adContent[0].letter) ? (
                    <div className="w-full h-full flex items-center justify-center bg-background">
-                     <GlitchLetter letter={currentAd.letter} />
+                     <GlitchLetter letter={adContent[0].letter} />
                    </div>
                 ) : (
                   adImage && (
                     <Image 
                       src={adImage.imageUrl}
                       data-ai-hint={adImage.imageHint} 
-                      alt={currentAd.title?.toString() || ''}
+                      alt={adContent[0].title?.toString() || ''}
                       fill 
                       className="object-cover transition-opacity duration-1000"
                     />
                   )
                 )}
-                {!revealedLetters.includes(currentAd.letter) && (
+                {!revealedLetters.includes(adContent[0].letter) && (
                   <div className="absolute inset-0 bg-black/50 text-center text-amber-100 font-body text-sm flex flex-col justify-end p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="font-bold">{currentAd.title}</p>
-                    <p className="text-xs italic">"{currentAd.tagline}"</p>
-                    <p className="text-xs mt-1 opacity-70">{currentAd.smallPrint}</p>
+                    <p className="font-bold">{adContent[0].title}</p>
+                    <p className="text-xs italic">"{adContent[0].tagline}"</p>
+                    <p className="text-xs mt-1 opacity-70">{adContent[0].smallPrint}</p>
                   </div>
                 )}
               </div>

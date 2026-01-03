@@ -1,26 +1,33 @@
 
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { decrypt } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 
-type PhaseLoginProps = {
-  onLoginSuccess: () => void;
-};
-
-const PhaseLogin = ({ onLoginSuccess }: PhaseLoginProps) => {
+const PhaseLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const router = useRouter();
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', 'login');
+    document.documentElement.classList.add('dark');
+    return () => {
+        document.body.removeAttribute('data-theme');
+        document.documentElement.classList.remove('dark');
+    }
+  }, []);
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (username === decrypt('Gqg_Ibdjw')) {
-      onLoginSuccess();
+      router.push('/terminal');
     } else {
       setError('Invalid Credentials. ACCESS DENIED.');
       setTimeout(() => setError(''), 2000);
@@ -28,7 +35,7 @@ const PhaseLogin = ({ onLoginSuccess }: PhaseLoginProps) => {
   };
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-background p-4">
+    <div className="w-full min-h-screen flex items-center justify-center p-4">
       <Card className="w-full max-w-sm bg-card/50 border-primary/50 shadow-lg text-glow">
         <CardHeader className="text-center">
           <div className="mx-auto mb-4">

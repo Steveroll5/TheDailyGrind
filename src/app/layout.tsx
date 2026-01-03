@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
+import CRTOverlay from './components/crt-overlay';
 
 export const metadata: Metadata = {
   title: 'Apex Anomaly',
@@ -20,7 +21,9 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@700&family=VT323&family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased">
-        {children}
+        <main className="relative min-h-screen bg-background text-foreground transition-colors duration-500 overflow-hidden">
+          {children}
+        </main>
         <Toaster />
       </body>
     </html>

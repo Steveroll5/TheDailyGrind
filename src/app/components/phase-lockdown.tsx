@@ -1,7 +1,19 @@
+'use client';
+import { useEffect } from 'react';
 import { decrypt } from "@/lib/utils";
 
 const PhaseLockdown = () => {
   const mailTo = `mailto:${decrypt('xjsnfwqfsfljw.pwzaxnnsijzxywnjx@lqfnq.htq')}?subject=${encodeURIComponent(decrypt('N FR UWY YM YMJ STNXY'))}`;
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', 'lockdown');
+    document.documentElement.classList.add('dark');
+    return () => {
+        document.body.removeAttribute('data-theme');
+        document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center p-8 text-center animate-pulse-alarm">
       <div className="font-code text-glow space-y-4">
