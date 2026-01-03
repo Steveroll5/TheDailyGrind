@@ -86,6 +86,7 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
                         <h4 className="font-bold text-xl border-b border-black/20 pb-1 mb-2">Important</h4>
                         <p className="text-lg">Password for lunch room:</p>
                         <p className="font-bold text-2xl my-2">123#</p>
+                        <p className="text-base mt-2">(Don't forget BOB!)</p>
                     </div>
                 </div>
             </div>
