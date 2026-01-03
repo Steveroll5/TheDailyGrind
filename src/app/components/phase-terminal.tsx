@@ -31,12 +31,12 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
 
     const handleReportSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-
-        if (encode(threatInput) === THREAT_ENCODED) {
+        const cleanedInput = threatInput.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (encode(cleanedInput) === THREAT_ENCODED) {
             onLockdown();
-        } else if (threatInput.toLowerCase().includes('rust')) {
+        } else if (cleanedInput.includes('rust')) {
             setTrapError("Error: Too Generic. Specify entity.");
-        } else if (threatInput.toLowerCase().includes('monster')) {
+        } else if (cleanedInput.includes('monster')) {
             setTrapError("Error: Unscientific. Use designated nomenclature.");
         } else {
             setTrapError("Error: Threat not recognized.");
@@ -82,7 +82,7 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
                 </div>
                 
                 <div className="relative">
-                    <div className="bg-amber-100 text-black p-6 transform -rotate-3 shadow-lg font-handwritten">
+                    <div className="bg-amber-100 text-black p-6 transform -rotate-3 shadow-lg font-handwritten" style={{ textShadow: 'none' }}>
                         <h4 className="font-bold text-xl border-b border-black/20 pb-1 mb-2">Important</h4>
                         <p className="text-lg">Password for lunch room:</p>
                         <p className="font-bold text-2xl my-2">123#</p>
