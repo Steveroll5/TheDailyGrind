@@ -16,7 +16,7 @@ import PhaseGlitch from './phase-glitch';
 import PagePeel from './page-peel';
 import FlashingAd from './flashing-ad';
 import Footer from './footer';
-import { decode } from '@/lib/utils';
+import { decrypt } from '@/lib/utils';
 
 type PhaseNewsletterProps = {
   onPasswordSuccess: () => void;
@@ -26,7 +26,7 @@ const adContent = [
     { id: 1, title: 'The Optimism Visor™', imageId: 'ad-visor', letter: 'C', tagline: "Hate the smog? Pretend it’s not there!", smallPrint: "Filters out grey color spectrums and safety warning signs. (Caution: Do not use near open pits)." },
     { id: 2, title: 'Krovus Dehydrated Water', imageId: 'ad-water', letter: 'O', tagline: "Lightweight! Portable! Just add... wait.", smallPrint: "Warning: Do not ingest powder directly. May cause internal dunes." },
     { id: 3, title: 'Grey-Scale Flavor Paste', imageId: 'ad-paste', letter: 'L', tagline: "Lunch in 3 seconds flat!", smallPrint: "Now with 5% less chalk! Flammable if exposed to direct optimism." },
-    { id: 4, title: <>Surplus <Redacted>{decode('RGVjaWJvdA==')}</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you. But it does twitch when you yell at it." },
+    { id: 4, title: <>Surplus <Redacted>{decrypt('Ijhnfqzy')}</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you. But it does twitch when you yell at it." },
 ];
 
 const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 border border-yellow-900" />;
@@ -47,12 +47,34 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const handleAdClick = useCallback((ad: (typeof adContent)[0]) => {
     if (revealedLetters.includes(ad.letter)) return;
     setActiveAd(ad);
-    setIsModalOpen(true);
+    setFlashingAdToShow(ad);
   }, [revealedLetters]);
 
   useEffect(() => {
-    // Empty placeholder for potential future use, avoids a warning.
-  }, [handleAdClick]);
+    const scheduleAd = (adIndex: number, delay: number) => {
+      const timeout = setTimeout(() => {
+        setFlashingAdToShow(adContent[adIndex]);
+      }, delay);
+      timeouts.push(timeout);
+    };
+
+    const adCycle = () => {
+      timeouts.forEach(clearTimeout);
+      timeouts.length = 0; // Clear the array
+      scheduleAd(0, 10000); // 10s
+      scheduleAd(1, 25000); // 10s + 15s
+      scheduleAd(2, 45000); // 25s + 20s
+      scheduleAd(3, 70000); // 45s + 25s
+    };
+
+    adCycle();
+    const cycleInterval = setInterval(adCycle, 71000); // Loop after the last ad + buffer
+
+    return () => {
+      timeouts.forEach(clearTimeout);
+      clearInterval(cycleInterval);
+    };
+  }, [timeouts]);
 
   useEffect(() => {
     if (showOpinionViolation) {
@@ -63,7 +85,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
         setTimeout(() => {
           setShowOpinionViolation(false);
           setGlitchingOut(false);
-          document.body.setAttribute('data-theme', 'newsletter');
+          document.body.setAttribute('data_theme', 'newsletter');
           document.documentElement.classList.remove('dark');
         }, 1500); // Duration of the glitch effect
       }, 5000); // 5 seconds on the violation screen
@@ -76,37 +98,11 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     }
   }, [showOpinionViolation]);
 
-  useEffect(() => {
-    const scheduleAd = (adIndex: number, delay: number) => {
-      const timeout = setTimeout(() => {
-        setFlashingAdToShow(adContent[adIndex]);
-      }, delay);
-      timeouts.push(timeout);
-    };
-  
-    const adCycle = () => {
-      timeouts.forEach(clearTimeout);
-      timeouts.length = 0; // Clear the array
-      scheduleAd(0, 10000); // 10s
-      scheduleAd(1, 25000); // 10s + 15s
-      scheduleAd(2, 45000); // 25s + 20s
-      scheduleAd(3, 70000); // 45s + 25s
-    };
-  
-    adCycle();
-    const cycleInterval = setInterval(adCycle, 71000); // Loop after the last ad + buffer
-  
-    return () => {
-      timeouts.forEach(clearTimeout);
-      clearInterval(cycleInterval);
-    };
-  }, [timeouts]);
-
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const searchTerm = gateInput.toLowerCase().trim();
 
-    if (searchTerm.replace(/\s/g, '') === decode('Y29sZGZyaWVz')) {
+    if (searchTerm.replace(/\s/g, '') === decrypt('htqikwnjx')) {
       setGateInput('');
       onPasswordSuccess();
       return;
@@ -224,8 +220,8 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
             const articleImage = PlaceHolderImages.find(p => p.id === article.image1Id);
             return (
               <Link href={`/articles/${article.id}`} key={article.id}>
-                <Card className="bg-card/80 border-2 border-secondary/50 ragged-edges hover:border-primary transition-all">
-                  <CardContent className="p-8 md:p-10">
+                <Card className="bg-card/80 border-2 border-secondary/50 ragged-edges p-2 hover:border-primary transition-all">
+                  <CardContent className="p-6 md:p-8">
                     <h2 className="font-headline text-4xl mb-4 text-secondary group-hover:text-primary">{article.title}</h2>
                     {articleImage && <Image src={articleImage.imageUrl} data-ai-hint={articleImage.imageHint} alt={articleImage.description} width={600} height={400} className="w-full h-auto mb-4 object-cover" />}
                     <p className="font-body text-lg leading-relaxed">{article.summary}</p>

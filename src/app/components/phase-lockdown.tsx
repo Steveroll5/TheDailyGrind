@@ -1,7 +1,7 @@
-import { decode } from "@/lib/utils";
+import { decrypt } from "@/lib/utils";
 
 const PhaseLockdown = () => {
-  const mailTo = `mailto:${decode('c2VuaW9ybWFuYWdlci5rcm92dXNpbmR1c3RyaWVzQGdtYWlsLmNvbQ==')}?subject=${encodeURIComponent(decode('SSBBTSBQQVJUIE9GIFRIRSBIT0lTRQ=='))}`;
+  const mailTo = `mailto:${decrypt('xjsnfwqfsfljw.pwzaxnnsijzxywnjx@lqfnq.htq')}?subject=${encodeURIComponent(decrypt('N FR UWY YM YMJ STNXY'))}`;
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center p-8 text-center animate-pulse-alarm">
       <div className="font-code text-glow space-y-4">

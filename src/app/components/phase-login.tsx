@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { decode } from '@/lib/utils';
+import { decrypt } from '@/lib/utils';
 
 type PhaseLoginProps = {
   onLoginSuccess: () => void;
@@ -19,7 +19,7 @@ const PhaseLogin = ({ onLoginSuccess }: PhaseLoginProps) => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === decode('Qm9iX0R3eWVy')) {
+    if (username === decrypt('Gqg_Ibdjw')) {
       onLoginSuccess();
     } else {
       setError('Invalid Credentials. ACCESS DENIED.');

@@ -9,10 +9,10 @@ import { Card, CardContent } from '@/components/ui/card';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Redacted from '@/app/components/redacted';
-import { decode } from '@/lib/utils';
+import { decrypt } from '@/lib/utils';
 
 const Censor = ({ text }: { text: string }) => {
-  const decibotsRegex = new RegExp(`(${decode('RGVjaWJvdHM=')})`, 'gi');
+  const decibotsRegex = new RegExp(`(${decrypt('Ijhnfqzyx')})`, 'gi');
   const parts = text.split(decibotsRegex);
   return (
     <>
@@ -50,8 +50,8 @@ export default function ArticlePage() {
       </header>
 
       <div className="container mx-auto">
-        <Card className="bg-card/80 border-2 border-primary/50 ragged-edges">
-          <CardContent className="p-8 md:p-10">
+        <Card className="bg-card/80 border-2 border-primary/50 ragged-edges p-2">
+          <CardContent className="p-6 md:p-8">
             <h2 className="font-headline text-4xl md:text-5xl mb-6 text-primary">{article.title}</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
