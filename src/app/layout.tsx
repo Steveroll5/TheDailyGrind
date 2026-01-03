@@ -8,7 +8,9 @@ export const metadata: Metadata = {
   title: 'Apex Anomaly',
   description: 'By The Apex Signal',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/favicon.ico?v=1',
+    shortcut: '/favicon.ico?v=1',
+    apple: '/favicon.ico?v=1',
   },
 };
 
