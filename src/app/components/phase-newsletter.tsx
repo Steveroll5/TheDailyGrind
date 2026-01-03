@@ -118,8 +118,9 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 
   const handleGateSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const searchTerm = gateInput.toLowerCase().trim();
-    const hashedInput = await hash(searchTerm.replace(/\s/g, ''));
+    const searchTerm = gateInput.trim();
+    const normalizedSearchTerm = searchTerm.toLowerCase().replace(/\s/g, '');
+    const hashedInput = await hash(normalizedSearchTerm);
 
     if (hashedInput === PASSWORD_HASH) {
       setGateInput('');
@@ -131,9 +132,9 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
       setFilteredArticles(articles);
     } else {
       const filtered = articles.filter(article => 
-        article.title.toLowerCase().includes(searchTerm) ||
-        article.summary.toLowerCase().includes(searchTerm) ||
-        article.content.toLowerCase().includes(searchTerm)
+        article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        article.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        article.content.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredArticles(filtered);
     }
