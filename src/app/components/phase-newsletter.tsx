@@ -36,10 +36,6 @@ const adContent = [
 
 const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 border border-yellow-900" />;
 
-// HASHED: "coldfries"
-const PASSWORD_HASH = 'c383a699216386b61c356b15835948415a9584287515e4941484165921214159a';
-
-
 const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const [gateInput, setGateInput] = useState('');
   const [filteredArticles, setFilteredArticles] = useState<Article[]>(articles);
@@ -119,10 +115,8 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const handleGateSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const searchTerm = gateInput.trim();
-    const normalizedSearchTerm = searchTerm.toLowerCase().replace(/\s/g, '');
-    const hashedInput = await hash(normalizedSearchTerm);
 
-    if (hashedInput === PASSWORD_HASH) {
+    if (searchTerm.toLowerCase() === 'cold fries') {
       setGateInput('');
       onPasswordSuccess();
       return;
@@ -315,3 +309,5 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 };
 
 export default PhaseNewsletter;
+
+    
