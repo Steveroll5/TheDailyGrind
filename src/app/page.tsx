@@ -68,10 +68,12 @@ export default function Home() {
     return null; // The article/news page will be rendered by its own component
   }
 
+  // Added 'overflow-hidden' to prevent scrollbars from rotated elements
   return (
-    <main className="relative min-h-screen bg-background text-foreground transition-colors duration-500">
+    <main className="relative min-h-screen bg-background text-foreground transition-colors duration-500 overflow-hidden">
       {['LOGIN', 'GLITCH', 'TERMINAL', 'LOCKDOWN'].includes(phase) && <CRTOverlay />}
-      <div className="relative z-10">{renderPhase()}</div>
+      {/* Added 'p-4 md:p-8' here to pull the game content away from the screen edges */}
+      <div className="relative z-10 p-4 md:p-8">{renderPhase()}</div>
     </main>
   );
 }
