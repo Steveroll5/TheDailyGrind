@@ -6,11 +6,11 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { hash } from '@/lib/utils';
+import { encode } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 
-// HASHED: "bobdwyer" (lowercase, non-alphanumeric removed)
-const CORRECT_USERNAME_HASH = '1308a02b6ea558325a76c855a953258c5f87e3505ac868285513511b0e5015b5';
+// ENCODED: "bobdwyer"
+const CORRECT_USERNAME_ENCODED = 'gtgi|~jw';
 
 
 const PhaseLogin = () => {
@@ -28,11 +28,10 @@ const PhaseLogin = () => {
     }
   }, []);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const hashedUsername = await hash(username);
     
-    if (hashedUsername === CORRECT_USERNAME_HASH) {
+    if (encode(username) === CORRECT_USERNAME_ENCODED) {
       router.push('/terminal');
     } else {
       setError('Invalid Credentials. ACCESS DENIED.');

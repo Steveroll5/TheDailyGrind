@@ -17,6 +17,8 @@ import PagePeel from './page-peel';
 import FlashingAd from './flashing-ad';
 import Footer from './footer';
 import { usePathname, useRouter } from 'next/navigation';
+import { encode } from '@/lib/utils';
+
 
 type PhaseNewsletterProps = {
   onPasswordSuccess: () => void;
@@ -29,6 +31,9 @@ const adContent = [
     { id: 3, title: 'Grey-Scale Flavor Paste', imageId: 'ad-paste', letter: 'L', tagline: "Lunch in 3 seconds flat!", smallPrint: "Now with 5% less chalk! Flammable if exposed to direct optimism." },
     { id: 4, title: <>Surplus <Redacted>Decibot</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you. But it does twitch when you yell at it." },
 ];
+
+// ENCODED: "coldfries"
+const CORRECT_PASSWORD_ENCODED = 'htqikwnjx';
 
 const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 border border-yellow-900" />;
 
@@ -110,14 +115,14 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const searchTerm = gateInput.toLowerCase().replace(/[^a-z0-9]/g, '');
     
-    if (searchTerm === 'coldfries') {
+    if (encode(gateInput) === CORRECT_PASSWORD_ENCODED) {
       setGateInput('');
       onPasswordSuccess();
       return;
     }
 
+    const searchTerm = gateInput.toLowerCase().replace(/[^a-z0-9]/g, '');
     if (searchTerm === '') {
       setFilteredArticles(articles);
     } else {

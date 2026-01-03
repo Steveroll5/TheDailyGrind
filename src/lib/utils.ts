@@ -6,22 +6,26 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+function shiftString(str: string, amount: number): string {
+    let result = '';
+    for (let i = 0; i < str.length; i++) {
+        let charCode = str.charCodeAt(i);
+        // We only shift alphanumeric characters
+        if ((charCode >= 48 && charCode <= 57) || (charCode >= 97 && charCode <= 122)) {
+             result += String.fromCharCode(charCode + amount);
+        } else {
+            result += str.charAt(i);
+        }
+    }
+    return result;
+}
+
 /**
- * Hashes a string using SHA-256.
- * The input string is first converted to lowercase and all non-alphanumeric characters are removed.
- * @param str The string to hash.
- * @returns A promise that resolves to the hex-encoded SHA-256 hash.
+ * Encodes a string by processing and shifting it.
+ * @param str The string to encode.
+ * @returns The encoded string.
  */
-export async function hash(str: string): Promise<string> {
+export function encode(str: string): string {
   const processedStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
-  if (typeof window === 'undefined') {
-    const crypto = require('crypto');
-    return crypto.createHash('sha256').update(processedStr).digest('hex');
-  }
-  const encoder = new TextEncoder();
-  const data = encoder.encode(processedStr);
-  const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-  return hashHex;
+  return shiftString(processedStr, 5);
 }
