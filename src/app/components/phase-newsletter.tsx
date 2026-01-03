@@ -19,7 +19,7 @@ import Footer from './footer';
 import { usePathname, useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import PhaseJumpscare from './phase-jumpscare';
-
+import { obfuscate, deobfuscate } from '@/lib/utils';
 
 type PhaseNewsletterProps = {
   onPasswordSuccess: () => void;
@@ -30,10 +30,10 @@ const adContent = [
     { id: 1, title: 'The Optimism Visor™', imageId: 'ad-visor', letter: 'C', tagline: "Hate the smog? Pretend it’s not there!", smallPrint: "Filters out grey color spectrums and safety warning signs. (Caution: Do not use near open pits)." },
     { id: 2, title: 'Krovus Dehydrated Water', imageId: 'ad-water', letter: 'O', tagline: "Lightweight! Portable! Just add... wait.", smallPrint: "Warning: Do not ingest powder directly. May cause internal dunes." },
     { id: 3, title: 'Grey-Scale Flavor Paste', imageId: 'ad-paste', letter: 'L', tagline: "Lunch in 3 seconds flat!", smallPrint: "Now with 5% less chalk! Flammable if exposed to direct optimism." },
-    { id: 4, title: <>Surplus <Redacted>Decibot</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you. But it does twitch when you yell at it." },
+    { id: 4, title: <>Surplus <Redacted>{deobfuscate('uvtqwxA')}</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you. But it does twitch when you yell at it." },
 ];
 
-const CORRECT_PASSWORD = 'coldfries';
+const CORRECT_PASSWORD_OBFUSCATED = obfuscate('coldfries');
 
 const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 border border-yellow-900" />;
 
@@ -117,7 +117,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     e.preventDefault();
     const processedInput = gateInput.toLowerCase().replace(/[^a-z0-9]/g, '');
     
-    if (processedInput === CORRECT_PASSWORD) {
+    if (obfuscate(processedInput) === CORRECT_PASSWORD_OBFUSCATED) {
         setGateInput('');
         onPasswordSuccess();
         return;
@@ -274,8 +274,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
                   placeholder="Search" 
                   className="bg-input border-primary/70 focus:ring-primary text-lg font-body"
                 />
-                <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-headline text-lg">Enter</Button>
-              </form>
+                <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-headline text-lg">Enter</Button>              </form>
             </CardContent>
           </Card>
 

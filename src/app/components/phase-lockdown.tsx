@@ -1,11 +1,13 @@
+
 'use client';
 import { useEffect } from 'react';
+import { deobfuscate } from '@/lib/utils';
 
 const PhaseLockdown = () => {
   // Obfuscated email parts
-  const user = 'seniormanager.krovusindustries';
-  const domain = 'gmail.com';
-  const subject = 'I AM PART OF THE NOISE';
+  const user = deobfuscate('hvs~w|svspsv|"z|xohz~vhk|"qvh');
+  const domain = deobfuscate('p|s~A(t|');
+  const subject = deobfuscate('R$Cr$iC_e$eNu$iPspv$p~h');
 
   const mailTo = `mailto:${user}@${domain}?subject=${encodeURIComponent(subject)}`;
 

@@ -8,8 +8,9 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Label } from '@/components/ui/label';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { obfuscate } from '@/lib/utils';
 
-const CORRECT_USERNAME = 'bobdwyer';
+const CORRECT_USERNAME_OBFUSCATED = obfuscate('bobdwyer');
 
 
 const PhaseLogin = () => {
@@ -47,7 +48,7 @@ const PhaseLogin = () => {
     e.preventDefault();
     const processedUsername = username.toLowerCase().replace(/[^a-z0-9]/g, '');
     
-    if (processedUsername === CORRECT_USERNAME) {
+    if (obfuscate(processedUsername) === CORRECT_USERNAME_OBFUSCATED) {
       router.push('/terminal');
     } else {
       setError('Invalid Credentials. ACCESS DENIED.');

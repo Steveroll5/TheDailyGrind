@@ -6,12 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { obfuscate } from "@/lib/utils";
 
 type PhaseTerminalProps = {
     onLockdown: () => void;
 };
 
-const THREAT_KEYWORD = 'decibot';
+const THREAT_KEYWORD_OBFUSCATED = obfuscate('decibot');
 
 const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
     const [threatInput, setThreatInput] = useState('');
@@ -46,7 +47,7 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
     const handleReportSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const cleanedInput = threatInput.toLowerCase().replace(/[^a-z0-9]/g, '');
-        if (cleanedInput === THREAT_KEYWORD) {
+        if (obfuscate(cleanedInput) === THREAT_KEYWORD_OBFUSCATED) {
             onLockdown();
         } else if (cleanedInput.includes('rust')) {
             setTrapError("Error: Too Generic. Specify entity.");

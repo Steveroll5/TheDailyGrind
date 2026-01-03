@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Redacted from './redacted';
 import React from 'react';
+import { deobfuscate } from '@/lib/utils';
 
 type FlashingAdProps = {
   ad: {
@@ -56,7 +57,7 @@ const FlashingAd = ({ ad, onClose, onAdClick }: FlashingAdProps) => {
           </div>
           <div className="text-center border-t-2 border-destructive/50 p-4">
              <h3 className="font-headline text-3xl text-destructive mb-2">
-                {ad.title}
+                {ad.id === 4 ? <>Surplus <Redacted>{deobfuscate('uvtqwxA')}</Redacted> Leg</> : ad.title}
              </h3>
             <p className="font-body text-lg italic text-foreground/80">"{ad.tagline}"</p>
             <p className="font-body text-xs mt-4 text-muted-foreground">{ad.smallPrint}</p>
