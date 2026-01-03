@@ -140,7 +140,7 @@
   }
   
   .ragged-edges {
-    clip-path: polygon(0% 2%, 98% 0%, 100% 98%, 2% 100%);
+    clip-path: polygon(0% 1%, 99% 0%, 100% 99%, 1% 100%);
   }
 
   .leather-texture {
