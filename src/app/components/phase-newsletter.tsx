@@ -17,6 +17,7 @@ import PagePeel from './page-peel';
 import FlashingAd from './flashing-ad';
 import Footer from './footer';
 import { decrypt } from '@/lib/utils';
+import { usePathname, useRouter } from 'next/navigation';
 
 type PhaseNewsletterProps = {
   onPasswordSuccess: () => void;
