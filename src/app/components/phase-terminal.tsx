@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
+import { decode } from "@/lib/utils";
 
 type PhaseTerminalProps = {
     onLockdown: () => void;
@@ -17,7 +18,7 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
         e.preventDefault();
         const input = threatInput.toLowerCase();
         
-        if (input === 'decibot') {
+        if (input === decode('ZGVjaWJvdA==')) {
             onLockdown();
         } else if (input === 'rust') {
             setTrapError("Error: Too Generic. Specify entity.");
@@ -51,7 +52,7 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
                                     <p><span className="text-primary/70">Searching for ID: #WIRE-808...</span></p>
                                     <p>... Match found.</p>
                                     <br/>
-                                    <p><strong>Name:</strong> Bob Dwyer</p>
+                                    <p><strong>Name:</strong> {decode('Qm9iIER3eWVy')}</p>
                                     <p><strong>ID:</strong> #WIRE-808</p>
                                     <p><strong>Role:</strong> Senior Perimeter Specialist</p>
                                     <p><strong>Status:</strong> <span className="text-destructive animate-pulse">MIA</span> (Last seen near Vending Machine B)</p>
@@ -70,7 +71,7 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
                     <div className="bg-amber-100 text-black p-6 transform -rotate-3 shadow-lg font-handwritten">
                         <h4 className="font-bold text-xl border-b border-black/20 pb-1 mb-2">URGENT</h4>
                         <p className="text-lg">Password for lunch room:</p>
-                        <p className="font-bold text-2xl my-2">COLD FRIES</p>
+                        <p className="font-bold text-2xl my-2">{decode('Q09MRCBGUklFUw==')}</p>
                         <p className="text-lg">(DON'T FORGET AGAIN BOB)</p>
                     </div>
                 </div>

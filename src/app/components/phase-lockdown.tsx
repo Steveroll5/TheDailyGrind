@@ -1,4 +1,7 @@
+import { decode } from "@/lib/utils";
+
 const PhaseLockdown = () => {
+  const mailTo = `mailto:${decode('c2VuaW9ybWFuYWdlci5rcm92dXNpbmR1c3RyaWVzQGdtYWlsLmNvbQ==')}?subject=${encodeURIComponent(decode('SSBBTSBQQVJUIE9GIFRIRSBIT0lTRQ=='))}`;
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center p-8 text-center animate-pulse-alarm">
       <div className="font-code text-glow space-y-4">
@@ -18,7 +21,7 @@ const PhaseLockdown = () => {
           APPEAL PROCESS (Surviving Site Managers Only)
         </p>
         <a 
-          href="mailto:seniormanager.krovusindustries@gmail.com?subject=I AM PART OF THE NOISE"
+          href={mailTo}
           className="mt-2 inline-block text-lg md:text-xl text-foreground/90 underline hover:text-foreground transition-colors"
         >
           &gt; INITIATE APPEAL

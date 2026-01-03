@@ -1,6 +1,6 @@
 
 'use client';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { articles, type Article } from '@/lib/articles';
@@ -16,6 +16,7 @@ import PhaseGlitch from './phase-glitch';
 import PagePeel from './page-peel';
 import FlashingAd from './flashing-ad';
 import Footer from './footer';
+import { decode } from '@/lib/utils';
 
 type PhaseNewsletterProps = {
   onPasswordSuccess: () => void;
@@ -25,7 +26,7 @@ const adContent = [
     { id: 1, title: 'The Optimism Visor™', imageId: 'ad-visor', letter: 'C', tagline: "Hate the smog? Pretend it’s not there!", smallPrint: "Filters out grey color spectrums and safety warning signs. (Caution: Do not use near open pits)." },
     { id: 2, title: 'Krovus Dehydrated Water', imageId: 'ad-water', letter: 'O', tagline: "Lightweight! Portable! Just add... wait.", smallPrint: "Warning: Do not ingest powder directly. May cause internal dunes." },
     { id: 3, title: 'Grey-Scale Flavor Paste', imageId: 'ad-paste', letter: 'L', tagline: "Lunch in 3 seconds flat!", smallPrint: "Now with 5% less chalk! Flammable if exposed to direct optimism." },
-    { id: 4, title: <>Surplus <Redacted>Decibot</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you. But it does twitch when you yell at it." },
+    { id: 4, title: <>Surplus <Redacted>{decode('RGVjaWJvdA==')}</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you. But it does twitch when you yell at it." },
 ];
 
 const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 border border-yellow-900" />;
@@ -42,6 +43,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const [showPeel, setShowPeel] = useState(true);
   const [peelGlitch, setPeelGlitch] = useState(false);
   const [flashingAdToShow, setFlashingAdToShow] = useState<(typeof adContent)[0] | null>(null);
+  const timeouts = useRef<NodeJS.Timeout[]>([]).current;
 
   useEffect(() => {
     const adInterval = setInterval(() => {
@@ -73,8 +75,6 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   }, [showOpinionViolation]);
 
   useEffect(() => {
-    const timeouts: NodeJS.Timeout[] = [];
-  
     const scheduleAd = (adIndex: number, delay: number) => {
       const timeout = setTimeout(() => {
         setFlashingAdToShow(adContent[adIndex]);
@@ -83,7 +83,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     };
   
     const adCycle = () => {
-      timeouts.forEach(clearTimeout); // Clear previous timeouts
+      timeouts.forEach(clearTimeout);
       scheduleAd(0, 10000); // 10s
       scheduleAd(1, 25000); // 10s + 15s
       scheduleAd(2, 45000); // 25s + 20s
@@ -91,19 +91,19 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     };
   
     adCycle();
-    const interval = setInterval(adCycle, 70000 + 1000); // Loop after the last ad + buffer
+    const interval = setInterval(adCycle, 71000); // Loop after the last ad + buffer
   
     return () => {
       timeouts.forEach(clearTimeout);
       clearInterval(interval);
     };
-  }, []);
+  }, [timeouts]);
 
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const searchTerm = gateInput.toLowerCase().trim();
 
-    if (searchTerm.replace(/\s/g, '') === 'coldfries') {
+    if (searchTerm.replace(/\s/g, '') === decode('Y29sZGZyaWVz')) {
       setGateInput('');
       onPasswordSuccess();
       return;
@@ -147,16 +147,15 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
       setPeelGlitch(false);
     }, 2000);
   };
-
+  
   const handleFlashingAdClick = () => {
     setIsModalOpen(true);
     setFlashingAdToShow(null);
   };
-  
+
   const handleFlashingAdClose = () => {
     setFlashingAdToShow(null);
   };
-
 
   if (glitchingOut || peelGlitch) {
     return <PhaseGlitch />;
@@ -202,10 +201,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     <div className="w-full min-h-screen grain-texture relative bg-background">
        {showPeel && <PagePeel onClick={handlePeelClick} />}
        {isModalOpen && <ViolationModal onClose={handleCloseModal} />}
-       {flashingAdToShow && <FlashingAd ad={flashingAdToShow} onClose={handleFlashingAdClose} onAdClick={() => {
-            setIsModalOpen(true);
-            setFlashingAdToShow(null);
-       }} />}
+       {flashingAdToShow && <FlashingAd ad={flashingAdToShow} onClose={handleFlashingAdClose} onAdClick={handleFlashingAdClick} />}
 
       <nav className="relative leather-texture border-b-4 border-secondary shadow-md p-4 flex justify-center items-center">
         <Rivet style={{ top: '6px', left: '6px' }} />

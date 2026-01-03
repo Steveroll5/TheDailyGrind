@@ -9,13 +9,15 @@ import { Card, CardContent } from '@/components/ui/card';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Redacted from '@/app/components/redacted';
+import { decode } from '@/lib/utils';
 
 const Censor = ({ text }: { text: string }) => {
-  const parts = text.split(/(Decibots)/gi);
+  const decibotsRegex = new RegExp(`(${decode('RGVjaWJvdHM=')})`, 'gi');
+  const parts = text.split(decibotsRegex);
   return (
     <>
       {parts.map((part, i) =>
-        /decibots/i.test(part) ? (
+        decibotsRegex.test(part) ? (
           <Redacted key={i}>{part}</Redacted>
         ) : (
           part
