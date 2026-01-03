@@ -42,6 +42,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const [showPeel, setShowPeel] = useState(true);
   const [peelGlitch, setPeelGlitch] = useState(false);
   const [flashingAdToShow, setFlashingAdToShow] = useState<(typeof adContent)[0] | null>(null);
+  const [currentSidebarAdIndex, setCurrentSidebarAdIndex] = useState(0);
   const timeouts = useRef<NodeJS.Timeout[]>([]).current;
   
   const handleAdClick = useCallback((ad: (typeof adContent)[0]) => {
@@ -49,6 +50,14 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     setActiveAd(ad);
     setFlashingAdToShow(ad);
   }, [revealedLetters]);
+
+    useEffect(() => {
+    const adCycleInterval = setInterval(() => {
+        setCurrentSidebarAdIndex(prevIndex => (prevIndex + 1) % adContent.length);
+    }, 5000); // Change ad every 5 seconds
+
+    return () => clearInterval(adCycleInterval);
+    }, []);
 
   useEffect(() => {
     const scheduleAd = (adIndex: number, delay: number) => {
@@ -60,10 +69,10 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     const adCycle = () => {
       timeouts.forEach(clearTimeout);
       timeouts.length = 0;
-      scheduleAd(0, 10000); // 10s
-      scheduleAd(1, 25000); // 10s + 15s
-      scheduleAd(2, 45000); // 25s + 20s
-      scheduleAd(3, 70000); // 45s + 25s
+      scheduleAd(0, 10000); 
+      scheduleAd(1, 25000);
+      scheduleAd(2, 45000);
+      scheduleAd(3, 70000);
     };
 
     adCycle();
@@ -73,7 +82,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
       timeouts.forEach(clearTimeout);
       clearInterval(cycleInterval);
     };
-  }, [timeouts, handleAdClick]);
+  }, [timeouts]);
 
 
   useEffect(() => {
@@ -190,7 +199,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     );
 };
   
-  const currentAd = adContent[0];
+  const currentAd = adContent[currentSidebarAdIndex];
   const adImage = PlaceHolderImages.find(p => p.id === currentAd.imageId);
 
   return (
@@ -261,27 +270,27 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
           <Card className="bg-card/80 border-2 border-secondary/50">
             <CardContent className="p-6">
               <h3 className="font-headline text-2xl mb-4 text-secondary">Advertisements</h3>
-              <div className="group relative aspect-[2/3] overflow-hidden border-2 border-dashed border-secondary/50 cursor-pointer" onClick={() => handleAdClick(adContent[0])}>
-                {revealedLetters.includes(adContent[0].letter) ? (
+              <div className="group relative aspect-[2/3] overflow-hidden border-2 border-dashed border-secondary/50 cursor-pointer" onClick={() => handleAdClick(currentAd)}>
+                {revealedLetters.includes(currentAd.letter) ? (
                    <div className="w-full h-full flex items-center justify-center bg-background">
-                     <GlitchLetter letter={adContent[0].letter} />
+                     <GlitchLetter letter={currentAd.letter} />
                    </div>
                 ) : (
                   adImage && (
                     <Image 
                       src={adImage.imageUrl}
                       data-ai-hint={adImage.imageHint} 
-                      alt={adContent[0].title?.toString() || ''}
+                      alt={currentAd.title?.toString() || ''}
                       fill 
                       className="object-cover transition-opacity duration-1000"
                     />
                   )
                 )}
-                {!revealedLetters.includes(adContent[0].letter) && (
+                {!revealedLetters.includes(currentAd.letter) && (
                   <div className="absolute inset-0 bg-black/50 text-center text-amber-100 font-body text-sm flex flex-col justify-end p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="font-bold">{adContent[0].title}</p>
-                    <p className="text-xs italic">"{adContent[0].tagline}"</p>
-                    <p className="text-xs mt-1 opacity-70">{adContent[0].smallPrint}</p>
+                    <p className="font-bold">{currentAd.title}</p>
+                    <p className="text-xs italic">"{currentAd.tagline}"</p>
+                    <p className="text-xs mt-1 opacity-70">{currentAd.smallPrint}</p>
                   </div>
                 )}
               </div>
