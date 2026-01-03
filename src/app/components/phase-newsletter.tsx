@@ -44,6 +44,12 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const [peelGlitch, setPeelGlitch] = useState(false);
   const [flashingAdToShow, setFlashingAdToShow] = useState<(typeof adContent)[0] | null>(null);
   const timeouts = useRef<NodeJS.Timeout[]>([]).current;
+  
+  const handleAdClick = useCallback((ad: (typeof adContent)[0]) => {
+    if (revealedLetters.includes(ad.letter)) return;
+    setActiveAd(ad);
+    setIsModalOpen(true);
+  }, [revealedLetters]);
 
   useEffect(() => {
     const adInterval = setInterval(() => {
@@ -121,12 +127,6 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     }
   };
 
-  const handleAdClick = useCallback((ad: (typeof adContent)[0]) => {
-    if (revealedLetters.includes(ad.letter)) return;
-    setActiveAd(ad);
-    setIsModalOpen(true);
-  }, [revealedLetters]);
-  
   const handleCloseModal = () => {
     setIsModalOpen(false);
     if (activeAd && !revealedLetters.includes(activeAd.letter)) {
@@ -227,8 +227,8 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
             const articleImage = PlaceHolderImages.find(p => p.id === article.image1Id);
             return (
               <Link href={`/articles/${article.id}`} key={article.id}>
-                <Card className="bg-card/80 border-2 border-secondary/50 p-4 ragged-edges hover:border-primary transition-all">
-                  <CardContent className="p-4 md:p-6">
+                <Card className="bg-card/80 border-2 border-secondary/50 ragged-edges hover:border-primary transition-all">
+                  <CardContent className="p-8 md:p-10">
                     <h2 className="font-headline text-4xl mb-4 text-secondary group-hover:text-primary">{article.title}</h2>
                     {articleImage && <Image src={articleImage.imageUrl} data-ai-hint={articleImage.imageHint} alt={articleImage.description} width={600} height={400} className="w-full h-auto mb-4 object-cover" />}
                     <p className="font-body text-lg leading-relaxed">{article.summary}</p>
@@ -237,8 +237,8 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
               </Link>
             );
           }) : (
-            <Card className="bg-card/80 border-2 border-primary/50 p-4 ragged-edges">
-              <CardContent className="p-4 md:p-6 text-center">
+            <Card className="bg-card/80 border-2 border-primary/50 ragged-edges">
+              <CardContent className="p-8 md:p-10 text-center">
                 <p className="font-body text-2xl text-primary">No articles found matching your search.</p>
               </CardContent>
             </Card>
