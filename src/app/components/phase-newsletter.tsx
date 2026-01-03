@@ -34,7 +34,6 @@ const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to
 const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const [gateInput, setGateInput] = useState('');
   const [filteredArticles, setFilteredArticles] = useState<Article[]>(articles);
-  const [currentAdIndex, setCurrentAdIndex] = useState(0);
   const [revealedLetters, setRevealedLetters] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeAd, setActiveAd] = useState<(typeof adContent)[0] | null>(null);
@@ -52,11 +51,8 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   }, [revealedLetters]);
 
   useEffect(() => {
-    const adInterval = setInterval(() => {
-      setCurrentAdIndex((prevIndex) => (prevIndex + 1) % adContent.length);
-    }, 5000);
-    return () => clearInterval(adInterval);
-  }, []);
+    // Empty placeholder for potential future use, avoids a warning.
+  }, [handleAdClick]);
 
   useEffect(() => {
     if (showOpinionViolation) {
@@ -90,6 +86,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   
     const adCycle = () => {
       timeouts.forEach(clearTimeout);
+      timeouts.length = 0; // Clear the array
       scheduleAd(0, 10000); // 10s
       scheduleAd(1, 25000); // 10s + 15s
       scheduleAd(2, 45000); // 25s + 20s
@@ -97,11 +94,11 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     };
   
     adCycle();
-    const interval = setInterval(adCycle, 71000); // Loop after the last ad + buffer
+    const cycleInterval = setInterval(adCycle, 71000); // Loop after the last ad + buffer
   
     return () => {
       timeouts.forEach(clearTimeout);
-      clearInterval(interval);
+      clearInterval(cycleInterval);
     };
   }, [timeouts]);
 
@@ -194,7 +191,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     );
 };
   
-  const currentAd = adContent[currentAdIndex];
+  const currentAd = adContent[0];
   const adImage = PlaceHolderImages.find(p => p.id === currentAd.imageId);
 
   return (

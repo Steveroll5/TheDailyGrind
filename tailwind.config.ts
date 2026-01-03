@@ -8,6 +8,20 @@ export default {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+      },
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1054px', // 1024px + 30px
+        xl: '1310px', // 1280px + 30px
+        '2xl': '1566px', // 1536px + 30px
+      },
+    },
     extend: {
       fontFamily: {
         body: ['"Courier Prime"', 'monospace'],

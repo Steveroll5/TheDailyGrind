@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { articles } from '@/lib/articles';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 
 export default function NewsPage() {
   return (
