@@ -23,8 +23,9 @@ type PhaseNewsletterProps = {
   onPasswordSuccess: () => void;
 };
 
-// HASHED: "Decibot"
-const DECIBOT_HASH = '8a6b15835695235815841a0d8359486541584AD41584955416556b15e45941459';
+// HASHED: "decibot"
+const DECIBOT_HASH = '112c3b88d89351a851b343501258658466436804595804584281989445470878';
+
 
 const adContent = [
     { id: 1, title: 'The Optimism Visor™', imageId: 'ad-visor', letter: 'C', tagline: "Hate the smog? Pretend it’s not there!", smallPrint: "Filters out grey color spectrums and safety warning signs. (Caution: Do not use near open pits)." },
