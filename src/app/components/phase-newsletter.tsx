@@ -32,7 +32,7 @@ const adContent = [
     { id: 4, title: <>Surplus <Redacted>Decibot</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you. But it does twitch when you yell at it." },
 ];
 
-const CORRECT_PASSWORD = 'cold fries';
+const CORRECT_PASSWORD = 'coldfries';
 
 const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 border border-yellow-900" />;
 
@@ -114,14 +114,14 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const processedInput = gateInput.toLowerCase().replace(/\s+/g, ' ').trim();
+    const processedInput = gateInput.toLowerCase().replace(/[^a-z0-9]/g, '');
     
     if (processedInput === CORRECT_PASSWORD) {
-      setGateInput('');
-      onPasswordSuccess();
-      return;
+        setGateInput('');
+        onPasswordSuccess();
+        return;
     }
-
+    
     const searchTerm = gateInput.toLowerCase().replace(/[^a-z0-9]/g, '');
     if (searchTerm === '') {
       setFilteredArticles(articles);
