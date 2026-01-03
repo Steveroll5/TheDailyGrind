@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
+import PhaseGlitch from './phase-glitch';
 
 type PhaseTerminalProps = {
     onLockdown: () => void;
@@ -16,14 +17,21 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
     const [threatInput, setThreatInput] = useState('');
     const [trapError, setTrapError] = useState('');
     const [bobName] = useState('Bob_Dwyer');
+    const [isGlitching, setIsGlitching] = useState(false);
 
     useEffect(() => {
         document.body.setAttribute('data-theme', 'terminal');
         document.documentElement.classList.add('dark');
         
+        const intervalId = setInterval(() => {
+            setIsGlitching(true);
+            setTimeout(() => setIsGlitching(false), 200);
+        }, 2000);
+
         return () => {
             document.body.removeAttribute('data-theme');
             document.documentElement.classList.remove('dark');
+            clearInterval(intervalId);
         }
     }, []);
 
@@ -40,6 +48,10 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
             setTrapError("Error: Threat not recognized.");
         }
     };
+
+    if (isGlitching) {
+        return <PhaseGlitch />;
+    }
 
     return (
         <div className="w-full min-h-screen font-code text-lg md:text-xl p-4 sm:p-6 md:p-8 flex flex-col items-center text-glow">

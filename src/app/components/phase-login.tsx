@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { useRouter } from 'next/navigation';
+import PhaseGlitch from './phase-glitch';
 
 const CORRECT_USERNAME = 'bobdwyer';
 
@@ -15,14 +16,22 @@ const PhaseLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isGlitching, setIsGlitching] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     document.body.setAttribute('data-theme', 'login');
     document.documentElement.classList.add('dark');
+    
+    const intervalId = setInterval(() => {
+        setIsGlitching(true);
+        setTimeout(() => setIsGlitching(false), 200);
+    }, 2000);
+
     return () => {
         document.body.removeAttribute('data-theme');
         document.documentElement.classList.remove('dark');
+        clearInterval(intervalId);
     }
   }, []);
 
@@ -37,6 +46,10 @@ const PhaseLogin = () => {
       setTimeout(() => setError(''), 2000);
     }
   };
+
+  if (isGlitching) {
+    return <PhaseGlitch />;
+  }
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center p-4">
