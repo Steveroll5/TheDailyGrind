@@ -6,8 +6,12 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { decrypt } from '@/lib/utils';
+import { hash } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
+
+// HASHED: "Bob_Dwyer"
+const CORRECT_USERNAME_HASH = '15d31f60431c5040552163991c01607565985094916298319131cb15f7988358';
+
 
 const PhaseLogin = () => {
   const [username, setUsername] = useState('');
@@ -24,9 +28,10 @@ const PhaseLogin = () => {
     }
   }, []);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === decrypt('Gqg_Ibdjw')) {
+    const hashedUsername = await hash(username);
+    if (hashedUsername === CORRECT_USERNAME_HASH) {
       router.push('/terminal');
     } else {
       setError('Invalid Credentials. ACCESS DENIED.');

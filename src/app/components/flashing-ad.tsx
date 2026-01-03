@@ -6,7 +6,6 @@ import { XCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Redacted from './redacted';
-import { decrypt } from '@/lib/utils';
 
 type FlashingAdProps = {
   ad: {
@@ -22,7 +21,7 @@ type FlashingAdProps = {
 
 const FlashingAd = ({ ad, onClose, onAdClick }: FlashingAdProps) => {
   const adImage = PlaceHolderImages.find(p => p.id === ad.imageId);
-  const decibotStr = decrypt('Ijhnfqzy');
+  const decibotStr = 'Decibot';
 
   const renderTitle = () => {
     if (typeof ad.title === 'string') {

@@ -9,10 +9,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Redacted from '@/app/components/redacted';
-import { decrypt } from '@/lib/utils';
 
 const Censor = ({ text }: { text: string }) => {
-  const decibotsRegex = new RegExp(`(${decrypt('Ijhnfqzyx')})`, 'gi');
+  const decibotsRegex = new RegExp(`(Decibot|Decibots)`, 'gi');
   const parts = text.split(decibotsRegex);
   return (
     <>

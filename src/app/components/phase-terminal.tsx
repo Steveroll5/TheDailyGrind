@@ -4,30 +4,41 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { decrypt } from "@/lib/utils";
+import { hash } from "@/lib/utils";
 
 type PhaseTerminalProps = {
     onLockdown: () => void;
 };
 
+// HASHED: "decibot"
+const THREAT_HASH = '112c3b88d89351a851b343501258658466436804595804584281989445470878';
+// HASHED: "Bob Dwyer"
+const BOB_DWYER_HASHED_NAME = '9a3854911e52ba13a504886695b3425a87858c42cf0558b368759616238cf74a';
+
 const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
     const [threatInput, setThreatInput] = useState('');
     const [trapError, setTrapError] = useState('');
+    const [bobName, setBobName] = useState('Gqg Ibdjw'); // Keep obfuscated display name
 
     useEffect(() => {
         document.body.setAttribute('data-theme', 'terminal');
         document.documentElement.classList.add('dark');
+
+        // You could have a function that "de-obfuscates" the name for display if needed
+        // For now, we'll keep the ARG-style name
+        
         return () => {
             document.body.removeAttribute('data-theme');
             document.documentElement.classList.remove('dark');
         }
     }, []);
 
-    const handleReportSubmit = (e: React.FormEvent) => {
+    const handleReportSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const input = threatInput.toLowerCase();
-        
-        if (input === decrypt('ijhnfqzy')) {
+        const input = threatInput.toLowerCase().trim();
+        const hashedInput = await hash(input);
+
+        if (hashedInput === THREAT_HASH) {
             onLockdown();
         } else if (input === 'rust') {
             setTrapError("Error: Too Generic. Specify entity.");
@@ -61,7 +72,7 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
                                     <p><span className="text-primary/70">Searching for ID: #WIRE-808...</span></p>
                                     <p>... Match found.</p>
                                     <br/>
-                                    <p><strong>Name:</strong> {decrypt('Gqg Ibdjw')}</p>
+                                    <p><strong>Name:</strong> {bobName}</p>
                                     <p><strong>ID:</strong> #WIRE-808</p>
                                     <p><strong>Role:</strong> Senior Perimeter Specialist</p>
                                     <p><strong>Status:</strong> <span className="text-destructive animate-pulse">MIA</span> (Last seen near Vending Machine B)</p>
@@ -80,7 +91,7 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
                     <div className="bg-amber-100 text-black p-6 transform -rotate-3 shadow-lg font-handwritten">
                         <h4 className="font-bold text-xl border-b border-black/20 pb-1 mb-2">URGENT</h4>
                         <p className="text-lg">Password for lunch room:</p>
-                        <p className="font-bold text-2xl my-2">{decrypt('HTQI KWNJX')}</p>
+                        <p className="font-bold text-2xl my-2">COLD FRIES</p>
                         <p className="text-lg">(DON'T FORGET AGAIN BOB)</p>
                     </div>
                 </div>

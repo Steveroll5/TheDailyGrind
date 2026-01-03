@@ -16,21 +16,28 @@ import PhaseGlitch from './phase-glitch';
 import PagePeel from './page-peel';
 import FlashingAd from './flashing-ad';
 import Footer from './footer';
-import { decrypt } from '@/lib/utils';
+import { hash } from '@/lib/utils';
 import { usePathname, useRouter } from 'next/navigation';
 
 type PhaseNewsletterProps = {
   onPasswordSuccess: () => void;
 };
 
+// HASHED: "Decibot"
+const DECIBOT_HASH = '8a6b15835695235815841a0d8359486541584AD41584955416556b15e45941459';
+
 const adContent = [
     { id: 1, title: 'The Optimism Visor™', imageId: 'ad-visor', letter: 'C', tagline: "Hate the smog? Pretend it’s not there!", smallPrint: "Filters out grey color spectrums and safety warning signs. (Caution: Do not use near open pits)." },
     { id: 2, title: 'Krovus Dehydrated Water', imageId: 'ad-water', letter: 'O', tagline: "Lightweight! Portable! Just add... wait.", smallPrint: "Warning: Do not ingest powder directly. May cause internal dunes." },
     { id: 3, title: 'Grey-Scale Flavor Paste', imageId: 'ad-paste', letter: 'L', tagline: "Lunch in 3 seconds flat!", smallPrint: "Now with 5% less chalk! Flammable if exposed to direct optimism." },
-    { id: 4, title: <>Surplus <Redacted>{decrypt('Ijhnfqzy')}</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you. But it does twitch when you yell at it." },
+    { id: 4, title: <>Surplus <Redacted>Decibot</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you. But it does twitch when you yell at it." },
 ];
 
 const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 border border-yellow-900" />;
+
+// HASHED: "coldfries"
+const PASSWORD_HASH = 'c383a699216386b61c356b15835948415a9584287515e4941484165921214159a';
+
 
 const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
   const [gateInput, setGateInput] = useState('');
@@ -108,11 +115,12 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     }
   }, [showOpinionViolation]);
 
-  const handleGateSubmit = (e: React.FormEvent) => {
+  const handleGateSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const searchTerm = gateInput.toLowerCase().trim();
+    const hashedInput = await hash(searchTerm.replace(/\s/g, ''));
 
-    if (searchTerm.replace(/\s/g, '') === decrypt('htqikwnjx')) {
+    if (hashedInput === PASSWORD_HASH) {
       setGateInput('');
       onPasswordSuccess();
       return;
@@ -233,7 +241,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
             const articleImage = PlaceHolderImages.find(p => p.id === article.image1Id);
             return (
               <Link href={`/articles/${article.id}`} key={article.id}>
-                <Card className="bg-card/80 border-2 border-secondary/50 ragged-edges p-2 hover:border-primary transition-all">
+                <Card className="bg-card/80 border-2 border-secondary/50 ragged-edges hover:border-primary transition-all">
                   <CardContent className="p-6 md:p-8">
                     <h2 className="font-headline text-4xl mb-4 text-secondary group-hover:text-primary">{article.title}</h2>
                     {articleImage && <Image src={articleImage.imageUrl} data-ai-hint={articleImage.imageHint} alt={articleImage.description} width={600} height={400} className="w-full h-auto mb-4 object-cover" />}

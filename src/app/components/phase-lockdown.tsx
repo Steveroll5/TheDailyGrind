@@ -1,9 +1,13 @@
 'use client';
 import { useEffect } from 'react';
-import { decrypt } from "@/lib/utils";
 
 const PhaseLockdown = () => {
-  const mailTo = `mailto:${decrypt('xjsnfwqfsfljw.pwzaxnnsijzxywnjx@lqfnq.htq')}?subject=${encodeURIComponent(decrypt('N FR UWY YM YMJ STNXY'))}`;
+  // Obfuscated email parts
+  const user = 'seniormanager.krovusindustries';
+  const domain = 'gmail.com';
+  const subject = 'I AM PART OF THE NOISE';
+
+  const mailTo = `mailto:${user}@${domain}?subject=${encodeURIComponent(subject)}`;
 
   useEffect(() => {
     document.body.setAttribute('data-theme', 'lockdown');
