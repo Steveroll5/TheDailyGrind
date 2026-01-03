@@ -23,9 +23,6 @@ type PhaseNewsletterProps = {
   onPasswordSuccess: () => void;
 };
 
-// HASHED: "decibot"
-const DECIBOT_HASH = '112c3b88d89351a851b343501258658466436804595804584281989445470878';
-
 
 const adContent = [
     { id: 1, title: 'The Optimism Visor™', imageId: 'ad-visor', letter: 'C', tagline: "Hate the smog? Pretend it’s not there!", smallPrint: "Filters out grey color spectrums and safety warning signs. (Caution: Do not use near open pits)." },
@@ -112,11 +109,11 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
     }
   }, [showOpinionViolation]);
 
-  const handleGateSubmit = async (e: React.FormEvent) => {
+  const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const searchTerm = gateInput.trim();
+    const searchTerm = gateInput.trim().replace(/\s+/g, ' ').toLowerCase();
 
-    if (searchTerm.toLowerCase() === 'cold fries') {
+    if (searchTerm === 'cold fries') {
       setGateInput('');
       onPasswordSuccess();
       return;
@@ -309,5 +306,3 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 };
 
 export default PhaseNewsletter;
-
-    

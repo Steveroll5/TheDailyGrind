@@ -1,3 +1,4 @@
+
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -6,12 +7,13 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export async function hash(str: string): Promise<string> {
+  const lowerCaseStr = str.toLowerCase();
   if (typeof window === 'undefined') {
     const crypto = require('crypto');
-    return crypto.createHash('sha256').update(str).digest('hex');
+    return crypto.createHash('sha256').update(lowerCaseStr).digest('hex');
   }
   const encoder = new TextEncoder();
-  const data = encoder.encode(str);
+  const data = encoder.encode(lowerCaseStr);
   const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');

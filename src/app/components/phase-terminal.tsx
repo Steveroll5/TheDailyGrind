@@ -1,3 +1,4 @@
+
 'use client';
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -10,9 +11,9 @@ type PhaseTerminalProps = {
     onLockdown: () => void;
 };
 
-// HASHED: "decibot"
+// HASHED: "decibot" (lowercase, no spaces)
 const THREAT_HASH = '112c3b88d89351a851b343501258658466436804595804584281989445470878';
-// HASHED: "Bob Dwyer"
+// HASHED: "bob_dwyer" (lowercase) - Note: This is different from the login one on purpose for the ARG.
 const BOB_DWYER_HASHED_NAME = '9a3854911e52ba13a504886695b3425a87858c42cf0558b368759616238cf74a';
 
 const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
@@ -23,9 +24,6 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
     useEffect(() => {
         document.body.setAttribute('data-theme', 'terminal');
         document.documentElement.classList.add('dark');
-
-        // You could have a function that "de-obfuscates" the name for display if needed
-        // For now, we'll keep the ARG-style name
         
         return () => {
             document.body.removeAttribute('data-theme');
@@ -35,14 +33,14 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
 
     const handleReportSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const input = threatInput.toLowerCase().trim();
+        const input = threatInput.trim();
         const hashedInput = await hash(input);
 
         if (hashedInput === THREAT_HASH) {
             onLockdown();
-        } else if (input === 'rust') {
+        } else if (input.toLowerCase() === 'rust') {
             setTrapError("Error: Too Generic. Specify entity.");
-        } else if (input === 'monster') {
+        } else if (input.toLowerCase() === 'monster') {
             setTrapError("Error: Unscientific. Use designated nomenclature.");
         } else {
             setTrapError("Error: Threat not recognized.");
