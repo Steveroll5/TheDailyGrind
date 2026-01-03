@@ -24,6 +24,16 @@ const FlashingAd = ({ ad, onClose, onAdClick }: FlashingAdProps) => {
   const adImage = PlaceHolderImages.find(p => p.id === ad.imageId);
   const decibotStr = decrypt('Ijhnfqzy');
 
+  const renderTitle = () => {
+    if (typeof ad.title === 'string') {
+      if (ad.title.includes('Decibot')) {
+        return <>Surplus <Redacted>{decibotStr}</Redacted> Leg</>
+      }
+      return ad.title;
+    }
+    return ad.title;
+  }
+
   return (
     <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" onClick={onClose}>
       <Card 
@@ -57,7 +67,7 @@ const FlashingAd = ({ ad, onClose, onAdClick }: FlashingAdProps) => {
           </div>
           <div className="text-center border-t-2 border-destructive/50 p-4">
              <h3 className="font-headline text-3xl text-destructive mb-2">
-                {typeof ad.title === 'string' && ad.title.includes(decibotStr) ? <Redacted>{decibotStr}</Redacted> : ad.title}
+                {renderTitle()}
              </h3>
             <p className="font-body text-lg italic text-foreground/80">"{ad.tagline}"</p>
             <p className="font-body text-xs mt-4 text-muted-foreground">{ad.smallPrint}</p>
