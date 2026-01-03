@@ -5,14 +5,12 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import { encode } from "@/lib/utils";
 
 type PhaseTerminalProps = {
     onLockdown: () => void;
 };
 
-// ENCODED: "decibot"
-const THREAT_ENCODED = 'ijhnf|y';
+const THREAT_KEYWORD = 'decibot';
 
 const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
     const [threatInput, setThreatInput] = useState('');
@@ -32,7 +30,7 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
     const handleReportSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         const cleanedInput = threatInput.toLowerCase().replace(/[^a-z0-9]/g, '');
-        if (encode(cleanedInput) === THREAT_ENCODED) {
+        if (cleanedInput === THREAT_KEYWORD) {
             onLockdown();
         } else if (cleanedInput.includes('rust')) {
             setTrapError("Error: Too Generic. Specify entity.");

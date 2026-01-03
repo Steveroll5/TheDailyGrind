@@ -6,11 +6,9 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { encode } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 
-// ENCODED: "bobdwyer"
-const CORRECT_USERNAME_ENCODED = 'gtgi|~jw';
+const CORRECT_USERNAME = 'bobdwyer';
 
 
 const PhaseLogin = () => {
@@ -30,8 +28,9 @@ const PhaseLogin = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    const processedUsername = username.toLowerCase().replace(/[^a-z0-9]/g, '');
     
-    if (encode(username) === CORRECT_USERNAME_ENCODED) {
+    if (processedUsername === CORRECT_USERNAME) {
       router.push('/terminal');
     } else {
       setError('Invalid Credentials. ACCESS DENIED.');
