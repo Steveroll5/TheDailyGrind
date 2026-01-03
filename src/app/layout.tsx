@@ -7,6 +7,9 @@ import CRTOverlay from './components/crt-overlay';
 export const metadata: Metadata = {
   title: 'Apex Anomaly',
   description: 'By The Apex Signal',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
@@ -17,7 +20,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:wght@700&family=VT323&family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
