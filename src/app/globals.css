@@ -28,6 +28,8 @@
     --border: 38 40% 60%;
     --input: 40 20% 92%;
     --ring: 38 67% 50%;
+    --terminal-background: 0 0% 0%;
+    --terminal-foreground: 105 100% 50%;
   }
 
   body[data-theme='login'] {
@@ -50,12 +52,16 @@
     --border: 105 100% 20%;
     --input: 0 0% 10%;
     --ring: 105 100% 50%;
+    --terminal-background: 0 0% 0%;
+    --terminal-foreground: 105 100% 50%;
   }
 
   body[data-theme='glitch'] {
     --background: 0 0% 0%;
     --foreground: 105 100% 50%;
     --destructive: 0 100% 50%;
+    --terminal-background: 0 0% 0%;
+    --terminal-foreground: 105 100% 50%;
   }
 
   body[data-theme='terminal'] {
@@ -78,6 +84,8 @@
     --border: 105 100% 20%;
     --input: 0 0% 10%;
     --ring: 105 100% 50%;
+    --terminal-background: 0 0% 0%;
+    --terminal-foreground: 105 100% 50%;
   }
   
   body[data-theme='lockdown'] {
@@ -100,6 +108,8 @@
     --border: 0 100% 25%;
     --input: 0 100% 15%;
     --ring: 0 100% 50%;
+    --terminal-background: 0 0% 0%;
+    --terminal-foreground: 105 100% 50%;
   }
 
   body[data-theme='phaseopinionviolation'] {
@@ -273,7 +283,7 @@
   50% { clip: rect(25px, 9999px, 70px, 0); transform: skew(0.56deg); }
   55% { clip: rect(41px, 9999px, 75px, 0); transform: skew(0.92deg); }
   60% { clip: rect(4px, 9999px, 89px, 0); transform: skew(0.87deg); }
-  65% { clip: rect(34px, 9999px, 66px, 0); transform: skew(0.58deg); }
+  65% { clip_path: rect(34px, 9999px, 66px, 0); transform: skew(0.58deg); }
   70% { clip: rect(2px, 9999px, 92px, 0); transform: skew(0.86deg); }
   75% { clip: rect(1px, 9999px, 1px, 0); transform: skew(0.04deg); }
   80% { clip: rect(92px, 9999px, 34px, 0); transform: skew(0.43deg); }

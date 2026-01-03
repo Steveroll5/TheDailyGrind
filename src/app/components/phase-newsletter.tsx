@@ -17,6 +17,7 @@ import PagePeel from './page-peel';
 import FlashingAd from './flashing-ad';
 import Footer from './footer';
 import { usePathname, useRouter } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 
 type PhaseNewsletterProps = {
@@ -31,7 +32,7 @@ const adContent = [
     { id: 4, title: <>Surplus <Redacted>Decibot</Redacted> Leg</>, imageId: 'ad-leg', letter: 'D', tagline: "Lonely? Adopt a drone part!", smallPrint: "It doesn't eat, sleep, or love you. But it does twitch when you yell at it." },
 ];
 
-const CORRECT_PASSWORD = 'coldfries';
+const CORRECT_PASSWORD = 'cold fries';
 
 const Rivet = () => <div className="absolute w-2 h-2 rounded-full bg-gradient-to-br from-yellow-600 to-yellow-800 border border-yellow-900" />;
 
@@ -113,7 +114,7 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const processedInput = gateInput.toLowerCase().replace(/\s+/g, '');
+    const processedInput = gateInput.toLowerCase().replace(/\s+/g, ' ').trim();
     
     if (processedInput === CORRECT_PASSWORD) {
       setGateInput('');
