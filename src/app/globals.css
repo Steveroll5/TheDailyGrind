@@ -177,6 +177,9 @@
     text-shadow: -2px 0 hsl(var(--secondary)), 2px 2px hsl(var(--primary));
     animation: glitch-anim-2 1s infinite linear alternate-reverse;
   }
+  .subtle-glitch {
+    animation: subtle-glitch-anim 0.2s linear;
+  }
 }
 
 @keyframes marquee {
@@ -294,4 +297,26 @@
   100% { transform: skew(-1deg); }
 }
 
+@keyframes subtle-glitch-anim {
+  0% {
+    transform: translate(0);
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+  }
+  25% {
+    transform: translate(1px, -1px);
+    text-shadow: -1px 0 red, 1px 0 cyan;
+  }
+  50% {
+    transform: translate(-1px, 1px);
+    text-shadow: 1px 0 red, -1px 0 cyan;
+  }
+  75% {
+    transform: translate(1px, 1px);
+    text-shadow: -1px -1px red, 1px 1px cyan;
+  }
+  100% {
+    transform: translate(0);
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+  }
+}
     

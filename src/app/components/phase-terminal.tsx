@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
-import PhaseGlitch from './phase-glitch';
+import { cn } from "@/lib/utils";
 
 type PhaseTerminalProps = {
     onLockdown: () => void;
@@ -23,15 +23,23 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
         document.body.setAttribute('data-theme', 'terminal');
         document.documentElement.classList.add('dark');
         
-        const intervalId = setInterval(() => {
+        let glitchTimeout: NodeJS.Timeout;
+
+        const scheduleGlitch = () => {
+          const randomDelay = Math.random() * 4000 + 1000; // 1s to 5s
+          glitchTimeout = setTimeout(() => {
             setIsGlitching(true);
-            setTimeout(() => setIsGlitching(false), 200);
-        }, 2000);
+            setTimeout(() => setIsGlitching(false), 200); // 0.2s duration
+            scheduleGlitch();
+          }, randomDelay);
+        };
+    
+        scheduleGlitch();
 
         return () => {
             document.body.removeAttribute('data-theme');
             document.documentElement.classList.remove('dark');
-            clearInterval(intervalId);
+            clearTimeout(glitchTimeout);
         }
     }, []);
 
@@ -49,12 +57,12 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
         }
     };
 
-    if (isGlitching) {
-        return <PhaseGlitch />;
-    }
 
     return (
-        <div className="w-full min-h-screen font-code text-lg md:text-xl p-4 sm:p-6 md:p-8 flex flex-col items-center text-glow">
+        <div className={cn(
+            "w-full min-h-screen font-code text-lg md:text-xl p-4 sm:p-6 md:p-8 flex flex-col items-center text-glow",
+             isGlitching && "subtle-glitch"
+            )}>
             <header className="w-full max-w-5xl mb-8 text-center border-b-2 border-primary/50 pb-2">
                 <p>&gt; KROVUS INDUSTRIES EMPLOYEE DATABASE (LEGACY)</p>
                 <p>&gt; // SERVER OFFLINE // LAST BACKUP: 5 YEARS AGO</p>
