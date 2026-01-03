@@ -7,12 +7,11 @@ export function cn(...inputs: ClassValue[]) {
 
 function shiftChar(char: string, shift: number): string {
   const code = char.charCodeAt(0);
-
   if (code >= 65 && code <= 90) { // Uppercase letters
-    return String.fromCharCode(((code - 65 + shift) % 26) + 65);
+    return String.fromCharCode(((code - 65 + shift + 26) % 26) + 65);
   }
   if (code >= 97 && code <= 122) { // Lowercase letters
-    return String.fromCharCode(((code - 97 + shift) % 26) + 97);
+    return String.fromCharCode(((code - 97 + shift + 26) % 26) + 97);
   }
   return char; // Non-alphabetic characters
 }
