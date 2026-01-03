@@ -9,8 +9,8 @@ import { Label } from '@/components/ui/label';
 import { hash } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 
-// HASHED: "bobdwyer" (lowercase, no spaces)
-const CORRECT_USERNAME_HASH = '1c7ca8d3c1391c9508383842d385a5a9d82136e4f55325883d65b058a5f03126';
+// HASHED: "bobdwyer" (lowercase, non-alphanumeric removed)
+const CORRECT_USERNAME_HASH = '1308a02b6ea558325a76c855a953258c5f87e3505ac868285513511b0e5015b5';
 
 
 const PhaseLogin = () => {

@@ -8,12 +8,12 @@ export function cn(...inputs: ClassValue[]) {
 
 /**
  * Hashes a string using SHA-256.
- * The input string is first converted to lowercase and all whitespace is removed.
+ * The input string is first converted to lowercase and all non-alphanumeric characters are removed.
  * @param str The string to hash.
  * @returns A promise that resolves to the hex-encoded SHA-256 hash.
  */
 export async function hash(str: string): Promise<string> {
-  const processedStr = str.toLowerCase().replace(/\s+/g, '');
+  const processedStr = str.toLowerCase().replace(/[^a-z0-9]/g, '');
   if (typeof window === 'undefined') {
     const crypto = require('crypto');
     return crypto.createHash('sha256').update(processedStr).digest('hex');

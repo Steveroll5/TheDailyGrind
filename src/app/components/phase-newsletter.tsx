@@ -110,10 +110,9 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const searchTerm = gateInput.trim().toLowerCase();
+    const searchTerm = gateInput.toLowerCase().replace(/[^a-z0-9]/g, '');
     
-    // Simple text comparison for "cold fries", ignoring spaces.
-    if (searchTerm.replace(/\s+/g, '') === 'coldfries') {
+    if (searchTerm === 'coldfries') {
       setGateInput('');
       onPasswordSuccess();
       return;

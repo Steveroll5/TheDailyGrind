@@ -24,11 +24,13 @@ const FlashingAd = ({ ad, onClose, onAdClick }: FlashingAdProps) => {
   const decibotStr = 'Decibot';
 
   const renderTitle = () => {
-    if (typeof ad.title === 'string') {
-      if (ad.title.includes('Decibot')) {
-        return <>Surplus <Redacted>{decibotStr}</Redacted> Leg</>
-      }
-      return ad.title;
+    if (typeof ad.title === 'string' && ad.title.includes(decibotStr)) {
+        const parts = ad.title.split(decibotStr);
+        return <>{parts[0]}<Redacted>{decibotStr}</Redacted>{parts[1]}</>
+    }
+    if (React.isValidElement(ad.title)) {
+        // This handles the case where the title is already a React node like <>Surplus <Redacted>Decibot</Redacted> Leg</>
+        return ad.title;
     }
     return ad.title;
   }

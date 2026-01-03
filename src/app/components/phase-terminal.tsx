@@ -11,13 +11,13 @@ type PhaseTerminalProps = {
     onLockdown: () => void;
 };
 
-// HASHED: "decibot" (lowercase, no spaces)
-const THREAT_HASH = 'd8b8ddce36209210452a230588d95180f5539560f472d7f870233c06d86a6039';
+// HASHED: "decibot" (lowercase, non-alphanumeric removed)
+const THREAT_HASH = '1c51cb01e09559e948a3f89901174696b9533b6329c50155b981546e5a01344f';
 
 const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
     const [threatInput, setThreatInput] = useState('');
     const [trapError, setTrapError] = useState('');
-    const [bobName, setBobName] = useState('Gqg Ibdjw'); // Keep obfuscated display name
+    const [bobName] = useState('Bob_Dwyer');
 
     useEffect(() => {
         document.body.setAttribute('data-theme', 'terminal');
