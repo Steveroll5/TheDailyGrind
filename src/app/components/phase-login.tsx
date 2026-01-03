@@ -9,8 +9,8 @@ import { Label } from '@/components/ui/label';
 import { hash } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 
-// HASHED: "bob_dwyer" (lowercase, no spaces)
-const CORRECT_USERNAME_HASH = '9a3854911e52ba13a504886695b3425a87858c42cf0558b368759616238cf74a';
+// HASHED: "bobdwyer" (lowercase, no spaces)
+const CORRECT_USERNAME_HASH = '1c7ca8d3c1391c9508383842d385a5a9d82136e4f55325883d65b058a5f03126';
 
 
 const PhaseLogin = () => {
@@ -30,8 +30,7 @@ const PhaseLogin = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const processedInput = username.trim();
-    const hashedUsername = await hash(processedInput);
+    const hashedUsername = await hash(username);
     
     if (hashedUsername === CORRECT_USERNAME_HASH) {
       router.push('/terminal');

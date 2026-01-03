@@ -12,9 +12,7 @@ type PhaseTerminalProps = {
 };
 
 // HASHED: "decibot" (lowercase, no spaces)
-const THREAT_HASH = '112c3b88d89351a851b343501258658466436804595804584281989445470878';
-// HASHED: "bob_dwyer" (lowercase) - Note: This is different from the login one on purpose for the ARG.
-const BOB_DWYER_HASHED_NAME = '9a3854911e52ba13a504886695b3425a87858c42cf0558b368759616238cf74a';
+const THREAT_HASH = 'd8b8ddce36209210452a230588d95180f5539560f472d7f870233c06d86a6039';
 
 const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
     const [threatInput, setThreatInput] = useState('');
@@ -33,14 +31,13 @@ const PhaseTerminal = ({ onLockdown }: PhaseTerminalProps) => {
 
     const handleReportSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const input = threatInput.trim();
-        const hashedInput = await hash(input);
+        const hashedInput = await hash(threatInput);
 
         if (hashedInput === THREAT_HASH) {
             onLockdown();
-        } else if (input.toLowerCase() === 'rust') {
+        } else if (threatInput.toLowerCase().includes('rust')) {
             setTrapError("Error: Too Generic. Specify entity.");
-        } else if (input.toLowerCase() === 'monster') {
+        } else if (threatInput.toLowerCase().includes('monster')) {
             setTrapError("Error: Unscientific. Use designated nomenclature.");
         } else {
             setTrapError("Error: Threat not recognized.");

@@ -16,7 +16,6 @@ import PhaseGlitch from './phase-glitch';
 import PagePeel from './page-peel';
 import FlashingAd from './flashing-ad';
 import Footer from './footer';
-import { hash } from '@/lib/utils';
 import { usePathname, useRouter } from 'next/navigation';
 
 type PhaseNewsletterProps = {
@@ -111,9 +110,10 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
 
   const handleGateSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const searchTerm = gateInput.trim().replace(/\s+/g, ' ').toLowerCase();
-
-    if (searchTerm === 'cold fries') {
+    const searchTerm = gateInput.trim().toLowerCase();
+    
+    // Simple text comparison for "cold fries", ignoring spaces.
+    if (searchTerm.replace(/\s+/g, '') === 'coldfries') {
       setGateInput('');
       onPasswordSuccess();
       return;
@@ -123,9 +123,9 @@ const PhaseNewsletter = ({ onPasswordSuccess }: PhaseNewsletterProps) => {
       setFilteredArticles(articles);
     } else {
       const filtered = articles.filter(article => 
-        article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        article.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        article.content.toLowerCase().includes(searchTerm.toLowerCase())
+        article.title.toLowerCase().includes(searchTerm) ||
+        article.summary.toLowerCase().includes(searchTerm) ||
+        article.content.toLowerCase().includes(searchTerm)
       );
       setFilteredArticles(filtered);
     }
